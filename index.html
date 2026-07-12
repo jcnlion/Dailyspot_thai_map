@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMA Map — แผนที่บริการกรุงเทพมหานคร</title>
+  <meta name="description" content="แผนที่สถานที่บริการของกรุงเทพมหานคร ห้องสมุด Co-Working Space และศูนย์นันทนาการ พร้อมฟีเจอร์ค้นหาตามระยะทาง">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header id="topbar">
+    <div id="topbar-left">
+      <button id="sidebar-toggle" class="icon-btn" title="เมนู" aria-label="Toggle sidebar">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div id="logo">
+        <span class="logo-icon">🗺</span>
+        <span class="logo-text" data-i18n="app.title">BMA Map</span>
+      </div>
+    </div>
+    <div id="topbar-right">
+      <button id="btn-theme" class="topbar-btn" title="Toggle Map Theme">
+        <svg id="theme-sun" class="hidden" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="theme-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <span id="theme-text" data-i18n="btn.theme">โหมดแผนที่</span>
+      </button>
+      <button id="btn-heatmap" class="topbar-btn" title="Heatmap">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        <span data-i18n="btn.heatmap">ความนิยม</span>
+      </button>
+      <button id="btn-favorites" class="topbar-btn" title="Favorites">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span data-i18n="btn.favorites">รายการโปรด</span>
+      </button>
+      <button id="btn-share" class="topbar-btn" title="Share">
+        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <span data-i18n="btn.share">แชร์</span>
+      </button>
+      <div id="lang-toggle">
+        <button id="btn-lang-th" class="lang-btn active" onclick="setLang('th')">TH</button>
+        <button id="btn-lang-en" class="lang-btn" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <main id="main">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="open">
+
+      <!-- Search Box -->
+      <div class="sidebar-section" id="search-section">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="search-input" placeholder="ค้นหาสถานที่..." data-i18n-placeholder="search.placeholder" autocomplete="off">
+          <button id="search-clear" class="search-clear hidden">✕</button>
+        </div>
+        <div id="search-results" class="hidden"></div>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="sidebar-section">
+        <div class="section-header">
+          <svg viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+          <span data-i18n="filter.title">ประเภทสถานที่</span>
+        </div>
+        <div id="category-filter">
+          <label class="filter-chip" id="chip-library">
+            <input type="checkbox" value="library" checked>
+            <span class="chip-dot" style="background:#4f9eff"></span>
+            <span data-i18n="filter.library">📚 ห้องสมุด</span>
+            <span class="chip-count" id="count-library">0</span>
+          </label>
+          <label class="filter-chip" id="chip-coworking">
+            <input type="checkbox" value="coworking" checked>
+            <span class="chip-dot" style="background:#a78bfa"></span>
+            <span data-i18n="filter.coworking">💻 Co-Working</span>
+            <span class="chip-count" id="count-coworking">0</span>
+          </label>
+          <label class="filter-chip" id="chip-museum">
+            <input type="checkbox" value="museum" checked>
+            <span class="chip-dot" style="background:#f59e0b"></span>
+            <span data-i18n="filter.museum">🧒 พิพิธภัณฑ์เด็ก</span>
+            <span class="chip-count" id="count-museum">0</span>
+          </label>
+          <label class="filter-chip" id="chip-recreation">
+            <input type="checkbox" value="recreation" checked>
+            <span class="chip-dot" style="background:#34d399"></span>
+            <span data-i18n="filter.recreation">🏃 ศูนย์นันทนาการ</span>
+            <span class="chip-count" id="count-recreation">0</span>
+          </label>
+          <label class="filter-chip" id="chip-sports">
+            <input type="checkbox" value="sports" checked>
+            <span class="chip-dot" style="background:#f87171"></span>
+            <span data-i18n="filter.sports">⚽ ศูนย์กีฬา</span>
+            <span class="chip-count" id="count-sports">0</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Buffer Control -->
+      <div class="sidebar-section">
+        <div class="section-header">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          <span data-i18n="buffer.title">ค้นหาในระยะ</span>
+        </div>
+        <div id="buffer-controls">
+          <div id="buffer-radius-display">
+            <span id="buffer-km">1.0</span>
+            <span data-i18n="buffer.unit"> กม.</span>
+          </div>
+          <input type="range" id="buffer-slider" min="0.5" max="10" step="0.5" value="1.0">
+          <div id="buffer-actions">
+            <button id="btn-locate" class="action-btn primary" id="btn-locate">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>
+              <span data-i18n="btn.locate">📍 ตำแหน่งของฉัน</span>
+            </button>
+            <button id="btn-click-point" class="action-btn secondary">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-i18n="btn.clickpoint">คลิกเพื่อตั้งจุด</span>
+            </button>
+            <button id="btn-clear-buffer" class="action-btn ghost hidden">
+              <span data-i18n="btn.clearbuffer">✕ ล้างวงกลม</span>
+            </button>
+          </div>
+          <div id="buffer-status" class="status-text"></div>
+        </div>
+      </div>
+
+      <!-- Detail Panel -->
+      <div id="detail-panel" class="sidebar-section hidden">
+        <div id="detail-header">
+          <div id="detail-type-badge"></div>
+          <button id="btn-close-detail" class="icon-btn">✕</button>
+        </div>
+        <h2 id="detail-name"></h2>
+        <div id="detail-open-badge"></div>
+        <div class="detail-row" id="detail-address-row">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span id="detail-address"></span>
+        </div>
+        <div class="detail-row" id="detail-phone-row">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 12a19.79 19.79 0 01-3.07-8.67A2 2 0 011.91 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.75a16 16 0 006.29 6.29l1.06-1.06a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span id="detail-phone"></span>
+        </div>
+        <div class="detail-row" id="detail-hours-row">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span id="detail-hours"></span>
+        </div>
+        <div class="detail-row" id="detail-pool-row" style="display:none">
+          <svg viewBox="0 0 24 24"><path d="M2 12h20M2 12c0 5.523 4.477 10 10 10s10-4.477 10-10M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10"/></svg>
+          <div id="detail-pool-info"></div>
+        </div>
+
+        <div id="detail-chart-section" class="hidden">
+          <div class="chart-header">
+            <span data-i18n="detail.visitors">👥 ผู้ใช้บริการ Co-Working รายเดือน</span>
+            <span id="chart-total-badge"></span>
+          </div>
+          <canvas id="visitors-chart"></canvas>
+        </div>
+
+        <div id="detail-crowdedness" class="hidden">
+          <div class="chart-header">
+            <span data-i18n="detail.crowdedness">⏰ ช่วงเวลาคึกคัก</span>
+          </div>
+          <div id="crowdedness-bars"></div>
+        </div>
+
+        <div id="detail-actions">
+          <button id="btn-favorite-venue" class="action-btn secondary">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span id="fav-btn-text" data-i18n="btn.addfav">เพิ่มรายการโปรด</span>
+          </button>
+          <button id="btn-navigate" class="action-btn primary">
+            <svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            <span data-i18n="btn.navigate">นำทาง</span>
+          </button>
+        </div>
+        <div id="route-status" class="status-text hidden"></div>
+      </div>
+
+      <!-- Favorites Panel -->
+      <div id="favorites-panel" class="sidebar-section hidden">
+        <div class="section-header">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span data-i18n="favorites.title">รายการโปรด</span>
+          <button id="btn-close-favorites" class="icon-btn ml-auto">✕</button>
+        </div>
+        <div id="favorites-list"></div>
+        <div id="favorites-empty" class="empty-state hidden">
+          <span data-i18n="favorites.empty">ยังไม่มีรายการโปรด</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Map Controls (floating) -->
+    <div id="map-controls">
+      <button id="btn-zoom-in" class="map-ctrl-btn" title="Zoom in">+</button>
+      <button id="btn-zoom-out" class="map-ctrl-btn" title="Zoom out">−</button>
+      <button id="btn-fit-bkk" class="map-ctrl-btn" title="กลับกรุงเทพ">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </button>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="hidden"></div>
+
+    <!-- Route Clear Button (floating) -->
+    <button id="btn-clear-route" class="fab-btn hidden">
+      <svg viewBox="0 0 24 24"><polyline points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      <span data-i18n="btn.clearroute">ล้างเส้นทาง</span>
+    </button>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+  <script src="https://unpkg.com/@turf/turf@6.5.0/turf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
