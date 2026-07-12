@@ -24,7 +24,7 @@
     ],
     "coverage": "Thailand",
     "osm_fetch_date": "2026-07-12",
-    "total_venues": 2147
+    "total_venues": 2150
   },
   "venues": [
     {
@@ -46688,6 +46688,147 @@
       "province": "กรุงเทพมหานคร",
       "lat": 13.6804,
       "lng": 100.3986,
+      "hours_th": "เปิดทุกวัน 05:00 - 21:00 น.",
+      "hours_en": "Daily 05:00 - 21:00",
+      "schedule": {
+        "0": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "1": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "2": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "3": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "4": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "5": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "6": {
+          "o": "05:00",
+          "c": "21:00"
+        }
+      }
+    },
+    {
+      "id": "park_bma_sila_rerk",
+      "name_th": "สวนศิลาฤกษ์ (สวนสุขภาพใต้สะพานภูมิพล 1)",
+      "name_en": "Sila Rerk Park (Bhumibol 1 Bridge Park)",
+      "types": [
+        "park"
+      ],
+      "address_th": "ใต้สะพานภูมิพล 1 ถนนพระรามที่ 3 แขวงบางโพงพาง เขตยานนาวา กรุงเทพมหานคร",
+      "address_en": "Under Bhumibol 1 Bridge, Rama III Rd, Bang Phongphang, Yan Nawa, Bangkok",
+      "district_th": "ยานนาวา",
+      "district_en": "Yan Nawa",
+      "province": "กรุงเทพมหานคร",
+      "lat": 13.672033,
+      "lng": 100.539203,
+      "hours_th": "เปิดทุกวัน 05:00 - 21:00 น.",
+      "hours_en": "Daily 05:00 - 21:00",
+      "schedule": {
+        "0": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "1": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "2": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "3": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "4": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "5": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "6": {
+          "o": "05:00",
+          "c": "21:00"
+        }
+      }
+    },
+    {
+      "id": "park_bma_chong_nonsi",
+      "name_th": "สวนสาธารณะคลองช่องนนทรี (Chong Nonsi Canal Park)",
+      "name_en": "Chong Nonsi Canal Park",
+      "types": [
+        "park"
+      ],
+      "address_th": "ถนนนราธิวาสราชนครินทร์ แขวงช่องนนทรี เขตยานนาวา กรุงเทพมหานคร",
+      "address_en": "Naradhiwas Rajanagarindra Rd, Chong Nonsi, Yan Nawa, Bangkok",
+      "district_th": "ยานนาวา",
+      "district_en": "Yan Nawa",
+      "province": "กรุงเทพมหานคร",
+      "lat": 13.7125,
+      "lng": 100.5372,
+      "hours_th": "เปิดทุกวัน 04:30 - 21:00 น.",
+      "hours_en": "Daily 04:30 - 21:00",
+      "schedule": {
+        "0": {
+          "o": "04:30",
+          "c": "21:00"
+        },
+        "1": {
+          "o": "04:30",
+          "c": "21:00"
+        },
+        "2": {
+          "o": "04:30",
+          "c": "21:00"
+        },
+        "3": {
+          "o": "04:30",
+          "c": "21:00"
+        },
+        "4": {
+          "o": "04:30",
+          "c": "21:00"
+        },
+        "5": {
+          "o": "04:30",
+          "c": "21:00"
+        },
+        "6": {
+          "o": "04:30",
+          "c": "21:00"
+        }
+      }
+    },
+    {
+      "id": "park_bma_sathupradit_expressway",
+      "name_th": "สวนสาธารณะเฉลิมพระเกียรติใต้ทางด่วนสาธุประดิษฐ์",
+      "name_en": "Sathupradit Expressway Park",
+      "types": [
+        "park"
+      ],
+      "address_th": "ใต้ทางด่วนสาธุประดิษฐ์ ถนนพระรามที่ 3 แขวงบางโพงพาง เขตยานนาวา กรุงเทพมหานคร",
+      "address_en": "Under Sathupradit Expressway, Rama III Rd, Bang Phongphang, Yan Nawa, Bangkok",
+      "district_th": "ยานนาวา",
+      "district_en": "Yan Nawa",
+      "province": "กรุงเทพมหานคร",
+      "lat": 13.6974,
+      "lng": 100.5332,
       "hours_th": "เปิดทุกวัน 05:00 - 21:00 น.",
       "hours_en": "Daily 05:00 - 21:00",
       "schedule": {
