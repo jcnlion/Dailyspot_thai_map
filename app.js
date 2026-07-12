@@ -197,11 +197,12 @@ function venueIcon(venue) {
              : venue.types.includes('park')      ? 'park'
              : 'library';
   const ic = ICONS[type];
+  const name = lang === 'th' ? venue.name_th : venue.name_en;
   return L.divIcon({
-    html: `<div class="custom-marker ${ic.cls}"><span>${ic.emoji}</span></div>`,
+    html: `<div class="custom-marker ${ic.cls}"><span>${ic.emoji}</span> <span class="marker-text" style="font-size:11px;font-weight:600;margin-left:2px;color:var(--text-primary);">${name}</span></div>`,
     className: '',
-    iconSize:   [38, 28],
-    iconAnchor: [19, 14],
+    iconSize:   [140, 28],
+    iconAnchor: [70, 14],
     popupAnchor:[0, -20],
   });
 }
@@ -801,13 +802,13 @@ function renderFavorites() {
   }
   empty.classList.add('hidden');
   list.innerHTML = favVenues.map(v => {
-    const icon = v.types.includes('coworking') ? 'ðŸ’»'
-               : v.types.includes('park')       ? 'ðŸŒ³'
-               : v.types.includes('museum')     ? 'ðŸ�›ï¸�'
-               : v.types.includes('recreation') ? 'ðŸ�ƒ'
-               : v.types.includes('sports')     ? 'âš½'
-               : v.types.includes('sport')      ? 'âš½'
-               : 'ðŸ“š';
+    const icon = v.types.includes('coworking') ? '💻'
+               : v.types.includes('park')       ? '🌳'
+               : v.types.includes('museum')     ? '🏛️'
+               : v.types.includes('recreation') ? '🏃'
+               : v.types.includes('sports')     ? '⚽'
+               : v.types.includes('sport')      ? '⚽'
+               : '📚';
     const name = lang === 'th' ? v.name_th : v.name_en;
     const dist = v.province || (lang === 'th' ? v.district_th : v.district_en) || '';
     return `<div class="fav-item" data-id="${v.id}">
@@ -816,7 +817,7 @@ function renderFavorites() {
         <div class="fav-item-name" title="${name}">${name}</div>
         <div class="fav-item-district">${dist}</div>
       </div>
-      <button class="fav-item-remove" data-remove="${v.id}" title="Remove">âœ•</button>
+      <button class="fav-item-remove" data-remove="${v.id}" title="Remove">✕</button>
     </div>`;
   }).join('');
 
@@ -907,13 +908,13 @@ searchInput.addEventListener('input', () => {
   if (!matches.length) { searchResults.classList.add('hidden'); return; }
 
   searchResults.innerHTML = matches.map(v => {
-    const icon = v.types.includes('coworking') ? 'ðŸ’»'
-               : v.types.includes('park')       ? 'ðŸŒ³'
-               : v.types.includes('museum')     ? 'ðŸ�›ï¸�'
-               : v.types.includes('recreation') ? 'ðŸ�ƒ'
-               : v.types.includes('sports')     ? 'âš½'
-               : v.types.includes('sport')      ? 'âš½'
-               : 'ðŸ“š';
+    const icon = v.types.includes('coworking') ? '💻'
+               : v.types.includes('park')       ? '🌳'
+               : v.types.includes('museum')     ? '🏛️'
+               : v.types.includes('recreation') ? '🏃'
+               : v.types.includes('sports')     ? '⚽'
+               : v.types.includes('sport')      ? '⚽'
+               : '📚';
     const name = lang === 'th' ? v.name_th : v.name_en;
     const dist = v.province || (lang === 'th' ? v.district_th : v.district_en) || '';
     return `<div class="search-result-item" data-id="${v.id}">
