@@ -1,96 +1,132 @@
 /* ============================================================
-   BMA Map — app.js
+   BMA Map â€” app.js
    All application logic (Map, Filter, Buffer, Route, etc.)
    ============================================================ */
 
 'use strict';
 
-// ── i18n ─────────────────────────────────────────────────────
-const T = {
-  th: {
-    'app.title':         'BMA Map',
-    'search.placeholder':'ค้นหาสถานที่...',
-    'filter.title':      'ประเภทสถานที่',
-    'filter.library':    '📚 ห้องสมุด',
-    'filter.coworking':  '💻 Co-Working',
-    'filter.museum':     '🧒 พิพิธภัณฑ์เด็ก',
-    'filter.recreation': '🏃 ศูนย์นันทนาการ',
-    'filter.sports':     '⚽ ศูนย์กีฬา',
-    'buffer.title':      'ค้นหาในระยะ',
-    'buffer.unit':       ' กม.',
-    'btn.locate':        '📍 ตำแหน่งของฉัน',
-    'btn.clickpoint':    'คลิกเพื่อตั้งจุด',
-    'btn.clearbuffer':   '✕ ล้างวงกลม',
-    'btn.theme':         'โหมดแผนที่',
-    'btn.heatmap':       'ความนิยม',
-    'btn.favorites':     'รายการโปรด',
-    'btn.share':         'แชร์',
-    'btn.navigate':      'นำทาง',
-    'btn.clearroute':    'ล้างเส้นทาง',
-    'btn.addfav':        '★ เพิ่มรายการโปรด',
-    'btn.removefav':     '★ ในรายการโปรด',
-    'detail.visitors':   '👥 ผู้ใช้บริการ Co-Working รายเดือน',
-    'detail.crowdedness':'⏰ ช่วงเวลาคึกคัก',
-    'detail.pool':       '🏊 ข้อมูลสระว่ายน้ำ',
-    'favorites.title':   'รายการโปรด',
-    'favorites.empty':   'ยังไม่มีรายการโปรด\nคลิก ★ เพื่อบันทึกสถานที่',
-    'status.locating':   '🔍 กำลังหาตำแหน่ง...',
-    'status.located':    '✓ พบตำแหน่งของคุณแล้ว',
-    'status.loc_error':  '⚠ ไม่สามารถหาตำแหน่งได้',
-    'status.clickmap':   '👆 คลิกบนแผนที่เพื่อตั้งจุดค้นหา',
-    'status.routing':    '🔄 กำลังโหลดเส้นทาง...',
-    'status.no_location':'⚠ กรุณาตั้งตำแหน่งก่อนนำทาง',
-    'status.route_error':'⚠ ไม่สามารถโหลดเส้นทางได้',
-    'status.found':      '✓ พบ %d สถานที่ในรัศมี %s กม.',
-    'status.share_ok':   '✓ คัดลอกลิงก์แล้ว',
-    'open.now':          'เปิดอยู่ขณะนี้',
-    'closed.now':        'ปิดแล้ว',
-    'type.library':      'ห้องสมุด',
-    'type.coworking':    'ห้องสมุด + Co-Working',
-    'type.museum':       'พิพิธภัณฑ์เด็ก',
-    'type.recreation':   'ศูนย์นันทนาการ',
-    'type.sports':       'ศูนย์กีฬา',
-    'total.visitors':    'รวม %d คน',
-    'pool.size':         'ขนาดสระ: %s',
-    'pool.busy':         'ช่วงคึกคัก: %s',
-    'pool.close':        'ปิดทำความสะอาด: %s',
-  },
-  en: {
-    'app.title':         'BMA Map',
+// â”€â”€ i18n â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€  th: {
+    'app.title':         'Dailyspot',
+    'search.placeholder':'à¸„à¹‰à¸™à¸«à¸²à¸ªà¸–à¸²à¸™à¸—à¸µà¹ˆ...',
+    'filter.title':      'à¸›à¸£à¸°à¹€à¸ à¸—à¸ªà¸–à¸²à¸™à¸—à¸µà¹ˆ',
+    'filter.library':    'ðŸ“š à¸«à¹‰à¸­à¸‡à¸ªà¸¡à¸¸à¸”',
+    'filter.coworking':  'ðŸ’» Co-Working',
+    'filter.museum':     'ðŸ�›ï¸� à¸žà¸´à¸žà¸´à¸˜à¸ à¸±à¸“à¸‘à¹Œ',
+    'filter.recreation': 'ðŸ�ƒ à¸¨à¸¹à¸™à¸¢à¹Œà¸™à¸±à¸™à¸—à¸™à¸²à¸�à¸²à¸£',
+    'filter.sports':     'âš½ à¸¨à¸¹à¸™à¸¢à¹Œà¸�à¸µà¸¬à¸²',
+    'filter.park':       'ðŸŒ³ à¸ªà¸§à¸™à¸ªà¸²à¸˜à¸²à¸£à¸“à¸°',
+    'filter.province':   'à¸ˆà¸±à¸‡à¸«à¸§à¸±à¸”',
+    'filter.all':        'à¸—à¸±à¹‰à¸‡à¸›à¸£à¸°à¹€à¸—à¸¨',
+    'buffer.title':      'à¸„à¹‰à¸™à¸«à¸²à¹ƒà¸™à¸£à¸°à¸¢à¸°',
+    'buffer.unit':       ' à¸�à¸¡.',
+    'btn.locate':        'ðŸ“� à¸•à¸³à¹�à¸«à¸™à¹ˆà¸‡à¸‚à¸­à¸‡à¸‰à¸±à¸™',
+    'btn.clickpoint':    'à¸„à¸¥à¸´à¸�à¹€à¸žà¸·à¹ˆà¸­à¸•à¸±à¹‰à¸‡à¸ˆà¸¸à¸”',
+    'btn.clearbuffer':   'âœ• à¸¥à¹‰à¸²à¸‡à¸§à¸‡à¸�à¸¥à¸¡',
+    'btn.theme':         'à¹‚à¸«à¸¡à¸”à¹�à¸œà¸™à¸—à¸µà¹ˆ',
+    'btn.heatmap':       'à¸„à¸§à¸²à¸¡à¸™à¸´à¸¢à¸¡',
+    'btn.favorites':     'à¸£à¸²à¸¢à¸�à¸²à¸£à¹‚à¸›à¸£à¸”',
+    'btn.share':         'à¹�à¸Šà¸£à¹Œ',
+    'btn.navigate':      'à¸™à¸³à¸—à¸²à¸‡',
+    'btn.clearroute':    'à¸¥à¹‰à¸²à¸‡à¹€à¸ªà¹‰à¸™à¸—à¸²à¸‡',
+    'btn.addfav':        'â˜… à¹€à¸žà¸´à¹ˆà¸¡à¸£à¸²à¸¢à¸�à¸²à¸£à¹‚à¸›à¸£à¸”',
+    'btn.removefav':     'â˜… à¹ƒà¸™à¸£à¸²à¸¢à¸�à¸²à¸£à¹‚à¸›à¸£à¸”',
+    'detail.visitors':   'ðŸ‘¥ à¸œà¸¹à¹‰à¹ƒà¸Šà¹‰à¸šà¸£à¸´à¸�à¸²à¸£ Co-Working à¸£à¸²à¸¢à¹€à¸”à¸·à¸­à¸™',
+    'detail.crowdedness':'â�° à¸Šà¹ˆà¸§à¸‡à¹€à¸§à¸¥à¸²à¸„à¸¶à¸�à¸„à¸±à¸�',
+    'detail.pool':       'ðŸ�”ï¸� à¸‚à¹‰à¸­à¸¡à¸¹à¸¥à¸ªà¸£à¸°à¸§à¹ˆà¸²à¸¢à¸™à¹‰à¸³',
+    'favorites.title':   'à¸£à¸²à¸¢à¸�à¸²à¸£à¹‚à¸›à¸£à¸”',
+    'favorites.empty':   'à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸¡à¸µà¸£à¸²à¸¢à¸�à¸²à¸£à¹‚à¸›à¸£à¸”\nà¸„à¸¥à¸´à¸� â˜… à¹€à¸žà¸·à¹ˆà¸­à¸šà¸±à¸™à¸—à¸¶à¸�à¸ªà¸–à¸²à¸™à¸—à¸µà¹ˆ',
+    'status.locating':   'ðŸ”� à¸�à¸³à¸¥à¸±à¸‡à¸«à¸²à¸•à¸³à¹�à¸«à¸™à¹ˆà¸‡...',
+    'status.located':    'âœ“ à¸žà¸šà¸•à¸³à¹�à¸«à¸™à¹ˆà¸‡à¸‚à¸­à¸‡à¸„à¸¸à¸“à¹�à¸¥à¹‰à¸§',
+    'status.loc_error':  'âš  à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¸«à¸²à¸•à¸³à¹�à¸«à¸™à¹ˆà¸‡à¹„à¸”à¹‰',
+    'status.clickmap':   'ðŸ‘† à¸„à¸¥à¸´à¸�à¸šà¸™à¹�à¸œà¸™à¸—à¸µà¹ˆà¹€à¸žà¸·à¹ˆà¸­à¸•à¸±à¹‰à¸‡à¸ˆà¸¸à¸”à¸„à¹‰à¸™à¸«à¸²',
+    'status.routing':    'ðŸ”„ à¸�à¸³à¸¥à¸±à¸‡à¹‚à¸«à¸¥à¸”à¹€à¸ªà¹‰à¸™à¸—à¸²à¸‡...',
+    'status.no_location':'âš  à¸�à¸£à¸¸à¸“à¸²à¸•à¸±à¹‰à¸‡à¸•à¸³à¹�à¸«à¸™à¹ˆà¸‡à¸�à¹ˆà¸­à¸™à¸™à¸³à¸—à¸²à¸‡',
+    'status.route_error':'âš  à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹‚à¸«à¸¥à¸”à¹€à¸ªà¹‰à¸™à¸—à¸²à¸‡à¹„à¸”à¹‰',
+    'status.found':      'âœ“ à¸žà¸š %d à¸ªà¸–à¸²à¸™à¸—à¸µà¹ˆà¹ƒà¸™à¸£à¸±à¸¨à¸¡à¸µ %s à¸�à¸¡.',
+    'status.share_ok':   'âœ“ à¸„à¸±à¸”à¸¥à¸­à¸�à¸¥à¸´à¸‡à¸�à¹Œà¹�à¸¥à¹‰à¸§',
+    'open.now':          'à¹€à¸›à¸´à¸”à¸­à¸¢à¸¹à¹ˆà¸‚à¸“à¸°à¸™à¸µà¹‰',
+    'closed.now':        'à¸›à¸´à¸”à¹�à¸¥à¹‰à¸§',
+    'type.library':      'à¸«à¹‰à¸­à¸‡à¸ªà¸¡à¸¸à¸”',
+    'type.coworking':    'à¸«à¹‰à¸­à¸‡à¸ªà¸¡à¸¸à¸” + Co-Working',
+    'type.museum':       'à¸žà¸´à¸žà¸´à¸˜à¸ à¸±à¸“à¸‘à¹Œ',
+    'type.recreation':   'à¸¨à¸¹à¸™à¸¢à¹Œà¸™à¸±à¸™à¸—à¸™à¸²à¸�à¸²à¸£',
+    'type.sports':       'à¸¨à¸¹à¸™à¸¢à¹Œà¸�à¸µà¸¬à¸²',
+    'type.sport':        'à¸¨à¸¹à¸™à¸¢à¹Œà¸�à¸µà¸¬à¸²',
+    'type.park':         'à¸ªà¸§à¸™à¸ªà¸²à¸˜à¸²à¸£à¸“à¸°',
+    'total.visitors':    'à¸£à¸§à¸¡ %d à¸„à¸™',
+    'pool.size':         'à¸‚à¸™à¸²à¸”à¸ªà¸£à¸°: %s',
+    'pool.busy':         'à¸Šà¹ˆà¸§à¸‡à¸„à¸¶à¸�à¸„à¸±à¸�: %s',
+    'pool.close':        'à¸›à¸´à¸”à¸—à¸³à¸„à¸§à¸²à¸¡à¸ªà¸°à¸­à¸²à¸”: %s',
+  },à  en: {
+    'app.title':         'Dailyspot',
     'search.placeholder':'Search venues...',
     'filter.title':      'Venue Types',
-    'filter.library':    '📚 Library',
-    'filter.coworking':  '💻 Co-Working',
-    'filter.museum':     '🧒 Children\'s Museum',
-    'filter.recreation': '🏃 Recreation Center',
-    'filter.sports':     '⚽ Sports Center',
+    'filter.library':    'ðŸ“š Library',
+    'filter.coworking':  'ðŸ’» Co-Working',
+    'filter.museum':     'ðŸ�›ï¸� Museum',
+    'filter.recreation': 'ðŸ�ƒ Recreation Center',
+    'filter.sports':     'âš½ Sports Center',
+    'filter.park':       'ðŸŒ³ Public Park',
+    'filter.province':   'Province',
+    'filter.all':        'All Thailand',
     'buffer.title':      'Search Nearby',
     'buffer.unit':       ' km',
-    'btn.locate':        '📍 My Location',
+    'btn.locate':        'ðŸ“� My Location',
     'btn.clickpoint':    'Click to Set Point',
-    'btn.clearbuffer':   '✕ Clear Circle',
+    'btn.clearbuffer':   'âœ• Clear Circle',
     'btn.theme':         'Map Mode',
     'btn.heatmap':       'Popularity',
     'btn.favorites':     'Favorites',
     'btn.share':         'Share',
     'btn.navigate':      'Navigate',
     'btn.clearroute':    'Clear Route',
-    'btn.addfav':        '★ Add to Favorites',
-    'btn.removefav':     '★ In Favorites',
-    'detail.visitors':   '👥 Monthly Co-Working Visitors',
-    'detail.crowdedness':'⏰ Peak Hours',
-    'detail.pool':       '🏊 Pool Information',
+    'btn.addfav':        'â˜… Add to Favorites',
+    'btn.removefav':     'â˜… In Favorites',
+    'detail.visitors':   'ðŸ‘¥ Monthly Co-Working Visitors',
+    'detail.crowdedness':'â�° Peak Hours',
+    'detail.pool':       'ðŸ�”ï¸� Pool Information',
     'favorites.title':   'Favorites',
-    'favorites.empty':   'No favorites yet.\nClick ★ to save a venue.',
-    'status.locating':   '🔍 Finding your location...',
-    'status.located':    '✓ Location found',
-    'status.loc_error':  '⚠ Could not find your location',
-    'status.clickmap':   '👆 Click the map to set a search point',
-    'status.routing':    '🔄 Loading route...',
-    'status.no_location':'⚠ Please set a location first',
-    'status.route_error':'⚠ Could not load route',
-    'status.found':      '✓ Found %d venues within %s km',
-    'status.share_ok':   '✓ Link copied!',
+    'favorites.empty':   'No favorites yet.\nClick â˜… to save a venue.',
+    'status.locating':   'ðŸ”� Finding your location...',
+    'status.located':    'âœ“ Location found',
+    'status.loc_error':  'âš  Could not find your location',
+    'status.clickmap':   'ðŸ‘† Click the map to set a search point',
+    'status.routing':    'ðŸ”„ Loading route...',
+    'status.no_location':'âš  Please set a location first',
+    'status.route_error':'âš  Could not load route',
+    'status.found':      'âœ“ Found %d venues within %s km',
+    'status.share_ok':   'âœ“ Link copied!',
+    'open.now':          'Open Now',
+    'closed.now':        'Closed',
+    'type.library':      'Library',
+    'type.coworking':    'Library + Co-Working',
+    'type.museum':       'Museum',
+    'type.recreation':   'Recreation Center',
+    'type.sports':       'Sports Center',
+    'type.sport':        'Sports Center',
+    'type.park':         'Public Park',
+    'total.visitors':    'Total %d visitors',
+    'pool.size':         'Pool: %s',
+    'pool.busy':         'Peak hours: %s',
+    'pool.close':        'Cleaning day: %s',
+  }te':      'Navigate',
+    'btn.clearroute':    'Clear Route',
+    'btn.addfav':        'â˜… Add to Favorites',
+    'btn.removefav':     'â˜… In Favorites',
+    'detail.visitors':   'ðŸ‘¥ Monthly Co-Working Visitors',
+    'detail.crowdedness':'â�° Peak Hours',
+    'detail.pool':       'ðŸ�Š Pool Information',
+    'favorites.title':   'Favorites',
+    'favorites.empty':   'No favorites yet.\nClick â˜… to save a venue.',
+    'status.locating':   'ðŸ”� Finding your location...',
+    'status.located':    'âœ“ Location found',
+    'status.loc_error':  'âš  Could not find your location',
+    'status.clickmap':   'ðŸ‘† Click the map to set a search point',
+    'status.routing':    'ðŸ”„ Loading route...',
+    'status.no_location':'âš  Please set a location first',
+    'status.route_error':'âš  Could not load route',
+    'status.found':      'âœ“ Found %d venues within %s km',
+    'status.share_ok':   'âœ“ Link copied!',
     'open.now':          'Open Now',
     'closed.now':        'Closed',
     'type.library':      'Library',
@@ -134,11 +170,12 @@ function applyI18n() {
   });
 }
 
-// ── State ─────────────────────────────────────────────────────
+// â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const state = {
   venues:        [],
-  activeTypes:   new Set(['library', 'coworking', 'museum', 'recreation', 'sports']),
-  markers:       {},          // id → L.Marker
+  activeTypes:   new Set(['library', 'coworking', 'museum', 'recreation', 'sports', 'sport', 'park']),
+  activeProvince: null,
+  markers:       {},          // id â†’ L.Marker
   clusterGroup:  null,
   heatLayer:     null,
   heatEnabled:   false,
@@ -150,31 +187,33 @@ const state = {
   routeLayer:    null,
   visitorChart:  null,
   selectedVenue: null,
-  mapTheme:      'dark',     // 'dark' or 'light'
+  mapTheme:      'light',     // 'light' or 'dark'
   favorites:     new Set(JSON.parse(localStorage.getItem('bma_favs') || '[]')),
 };
 
-// ── Map Init ──────────────────────────────────────────────────
+// â”€â”€ Map Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const map = L.map('map', {
-  center: [13.7563, 100.5018],
-  zoom: 12,
+  center: [13.0, 101.0],
+  zoom: 6,
   zoomControl: false,
   attributionControl: true,
 });
-map.getContainer().classList.add('map-dark');
+map.getContainer().classList.add('map-light');
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '© <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+  attribution: 'Â© <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
   maxZoom: 19,
 }).addTo(map);
 
-// ── Marker Icons ──────────────────────────────────────────────
+// â”€â”€ Marker Icons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const ICONS = {
-  library:     { emoji: '📚', cls: 'marker-library'    },
-  coworking:   { emoji: '💻', cls: 'marker-coworking'   },
-  museum:      { emoji: '🧒', cls: 'marker-museum'      },
-  recreation:  { emoji: '🏃', cls: 'marker-recreation'  },
-  sports:      { emoji: '⚽', cls: 'marker-sports'      },
+  library:     { emoji: 'ðŸ“š', cls: 'marker-library'    },
+  coworking:   { emoji: 'ðŸ’»', cls: 'marker-coworking'   },
+  museum:      { emoji: 'ðŸ�›ï¸�', cls: 'marker-museum'      },
+  recreation:  { emoji: 'ðŸ�ƒ', cls: 'marker-recreation'  },
+  sports:      { emoji: 'âš½', cls: 'marker-sports'      },
+  sport:       { emoji: 'âš½', cls: 'marker-sports'      },
+  park:        { emoji: 'ðŸŒ³', cls: 'marker-park'        },
 };
 
 function venueIcon(venue) {
@@ -182,14 +221,16 @@ function venueIcon(venue) {
              : venue.types.includes('museum')    ? 'museum'
              : venue.types.includes('recreation')? 'recreation'
              : venue.types.includes('sports')    ? 'sports'
+             : venue.types.includes('sport')     ? 'sport'
+             : venue.types.includes('park')      ? 'park'
              : 'library';
   const ic = ICONS[type];
   return L.divIcon({
     html: `<div class="custom-marker ${ic.cls}"><span>${ic.emoji}</span></div>`,
     className: '',
-    iconSize:   [32, 32],
-    iconAnchor: [16, 32],
-    popupAnchor:[0, -34],
+    iconSize:   [38, 28],
+    iconAnchor: [19, 14],
+    popupAnchor:[0, -20],
   });
 }
 
@@ -198,35 +239,53 @@ function venueType(venue) {
   if (venue.types.includes('museum'))    return 'museum';
   if (venue.types.includes('recreation'))return 'recreation';
   if (venue.types.includes('sports'))    return 'sports';
+  if (venue.types.includes('sport'))     return 'sport';
+  if (venue.types.includes('park'))      return 'park';
   return 'library';
 }
 
-// ── Load Venues ───────────────────────────────────────────────
+// â”€â”€ Load Venues â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 async function loadVenues() {
   const res  = await fetch('data/venues.json');
   const data = await res.json();
   state.venues = data.venues;
   state.meta   = data.meta;
   state.clusterGroup = L.markerClusterGroup({
-    maxClusterRadius: 50,
+    maxClusterRadius: 60,
     disableClusteringAtZoom: 15,
     iconCreateFunction: cluster => {
       const count = cluster.getChildCount();
+      const size = count < 10 ? 34 : count < 100 ? 40 : 46;
       return L.divIcon({
         html: `<div style="
-          width:36px;height:36px;border-radius:50%;
-          background:rgba(17,24,39,0.9);
-          border:2px solid rgba(79,158,255,0.5);
+          width:${size}px;height:${size}px;border-radius:50%;
+          background:#f5e6d3;
+          border:2.5px solid #c2714f;
           display:flex;align-items:center;justify-content:center;
-          color:#f0f4ff;font-size:12px;font-weight:700;
-          box-shadow:0 2px 12px rgba(0,0,0,0.5);">${count}</div>`,
+          color:#c2714f;font-size:12px;font-weight:800;
+          box-shadow:0 2px 10px rgba(194,113,79,0.30);
+          font-family:'DM Sans',sans-serif;">${count}</div>`,
         className: '',
-        iconSize: [36, 36],
-        iconAnchor: [18, 18],
+        iconSize: [size, size],
+        iconAnchor: [size/2, size/2],
       });
     }
   });
   map.addLayer(state.clusterGroup);
+
+  // Build province dropdown
+  const provinces = [...new Set(state.venues
+    .map(v => v.province)
+    .filter(p => p && p !== 'à¹„à¸¡à¹ˆà¸£à¸°à¸šà¸¸à¸ˆà¸±à¸‡à¸«à¸§à¸±à¸”')
+  )].sort((a, b) => a.localeCompare(b, 'th'));
+  const sel = document.getElementById('province-select');
+  provinces.forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p;
+    opt.textContent = p;
+    sel.appendChild(opt);
+  });
+
   renderMarkers();
   updateFilterCounts();
   buildHeatLayer();
@@ -248,9 +307,14 @@ function renderMarkers() {
 
 function visibleVenues() {
   return state.venues.filter(v => {
-    // category filter
-    const hasActive = v.types.some(tp => state.activeTypes.has(tp));
+    // category filter â€” treat 'sport' same as 'sports'
+    const hasActive = v.types.some(tp => {
+      const norm = tp === 'sport' ? 'sports' : tp;
+      return state.activeTypes.has(norm) || state.activeTypes.has(tp);
+    });
     if (!hasActive) return false;
+    // province filter
+    if (state.activeProvince && v.province !== state.activeProvince) return false;
     // buffer filter
     if (state.bufferCircle && state.bufferPoint) {
       const from = turf.point([v.lng, v.lat]);
@@ -262,7 +326,7 @@ function visibleVenues() {
   });
 }
 
-// ── Filter ────────────────────────────────────────────────────
+// â”€â”€ Filter â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 document.getElementById('category-filter').addEventListener('change', e => {
   const cb = e.target;
   if (cb.type !== 'checkbox') return;
@@ -273,15 +337,32 @@ document.getElementById('category-filter').addEventListener('change', e => {
   buildHeatLayer();
 });
 
+// Province filter
+document.getElementById('province-select').addEventListener('change', e => {
+  state.activeProvince = e.target.value || null;
+  renderMarkers();
+  updateFilterCounts();
+  updateBufferStatus();
+});
+
 function updateFilterCounts() {
-  ['library','coworking','museum','recreation','sports'].forEach(tp => {
-    const count = state.venues.filter(v => v.types.some(t => t === tp)).length;
+  // sports count includes both 'sports' (BKK) and 'sport' (OSM)
+  const counts = { library: 0, coworking: 0, museum: 0, recreation: 0, sports: 0, park: 0 };
+  const prov = state.activeProvince;
+  state.venues.forEach(v => {
+    if (prov && v.province !== prov) return;
+    v.types.forEach(tp => {
+      const key = tp === 'sport' ? 'sports' : tp;
+      if (key in counts) counts[key]++;
+    });
+  });
+  Object.entries(counts).forEach(([tp, cnt]) => {
     const el = document.getElementById('count-' + tp);
-    if (el) el.textContent = count;
+    if (el) el.textContent = cnt;
   });
 }
 
-// ── Buffer + Location ─────────────────────────────────────────
+// â”€â”€ Buffer + Location â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const slider     = document.getElementById('buffer-slider');
 const bufferKmEl = document.getElementById('buffer-km');
 
@@ -395,7 +476,7 @@ function updateBufferStatus() {
   setBufferStatus(t('status.found', count, state.bufferRadius.toFixed(1)));
 }
 
-// ── Venue Selection & Detail Panel ───────────────────────────
+// â”€â”€ Venue Selection & Detail Panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function selectVenue(venue) {
   state.selectedVenue = venue;
   // Fly to venue
@@ -438,7 +519,7 @@ function showDetail(venue) {
 
   // Phone
   const phoneEl = document.getElementById('detail-phone');
-  phoneEl.textContent = venue.phone || '—';
+  phoneEl.textContent = venue.phone || 'â€”';
   document.getElementById('detail-phone-row').style.display =
     venue.phone ? '' : 'none';
 
@@ -500,7 +581,7 @@ document.getElementById('btn-close-detail').addEventListener('click', () => {
   state.selectedVenue = null;
 });
 
-// ── Visitor & Simulated Chart (Option A) ──────────────────────
+// â”€â”€ Visitor & Simulated Chart (Option A) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function renderSimulatedOrMonthlyChart(venue) {
   if (state.visitorChart) { state.visitorChart.destroy(); state.visitorChart = null; }
   const ctx = document.getElementById('visitors-chart').getContext('2d');
@@ -539,8 +620,8 @@ function renderSimulatedOrMonthlyChart(venue) {
     const currentDay = new Date().getDay(); // 0 = Sun, 1 = Mon ...
     const isWeekend = (currentDay === 0 || currentDay === 6);
     document.getElementById('chart-total-badge').textContent = isWeekend
-      ? (lang === 'th' ? 'จำลอง: คนค่อนข้างหนาแน่น' : 'Simulated: Moderately Busy')
-      : (lang === 'th' ? 'จำลอง: ระดับปกติ' : 'Simulated: Normal');
+      ? (lang === 'th' ? 'à¸ˆà¸³à¸¥à¸­à¸‡: à¸„à¸™à¸„à¹ˆà¸­à¸™à¸‚à¹‰à¸²à¸‡à¸«à¸™à¸²à¹�à¸™à¹ˆà¸™' : 'Simulated: Moderately Busy')
+      : (lang === 'th' ? 'à¸ˆà¸³à¸¥à¸­à¸‡: à¸£à¸°à¸”à¸±à¸šà¸›à¸�à¸•à¸´' : 'Simulated: Normal');
 
     // Generate simulated occupancy pattern (10:00 - 20:00)
     const hoursLabels = ['10:00','12:00','14:00','16:00','18:00','20:00'];
@@ -565,7 +646,7 @@ function renderSimulatedOrMonthlyChart(venue) {
       data: {
         labels: hoursLabels,
         datasets: [{
-          label: lang === 'th' ? 'ความหนาแน่น (%)' : 'Occupancy (%)',
+          label: lang === 'th' ? 'à¸„à¸§à¸²à¸¡à¸«à¸™à¸²à¹�à¸™à¹ˆà¸™ (%)' : 'Occupancy (%)',
           data: simulatedData,
           backgroundColor: 'rgba(79, 158, 255, 0.15)',
           borderColor: 'rgba(79, 158, 255, 0.85)',
@@ -595,12 +676,12 @@ function renderSimulatedOrMonthlyChart(venue) {
   }
 }
 
-// ── Crowdedness Indicator ────────────────────────────────────
+// â”€â”€ Crowdedness Indicator â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function renderCrowdedness(busyHoursStr) {
   const container = document.getElementById('crowdedness-bars');
   const slots = busyHoursStr.split(',').map(s => s.trim());
   const hours = [
-    '06–08','08–10','10–12','12–14','14–16','16–18','18–20','20–21'
+    '06â€“08','08â€“10','10â€“12','12â€“14','14â€“16','16â€“18','18â€“20','20â€“21'
   ];
   // Map busy hours to crowd percentage
   const crowdMap = {};
@@ -608,7 +689,7 @@ function renderCrowdedness(busyHoursStr) {
     const match = slot.match(/(\d+):00/g);
     if (!match || match.length < 2) return;
     const h = parseInt(match[0]);
-    const label = `${String(h).padStart(2,'0')}–${String(h+2).padStart(2,'0')}`;
+    const label = `${String(h).padStart(2,'0')}â€“${String(h+2).padStart(2,'0')}`;
     crowdMap[label] = 90 + Math.floor(Math.random() * 10);
   });
 
@@ -625,21 +706,21 @@ function renderCrowdedness(busyHoursStr) {
   }).join('');
 }
 
-// ── Heatmap ───────────────────────────────────────────────────
+// â”€â”€ Heatmap â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 document.getElementById('btn-theme').addEventListener('click', () => {
   const container = map.getContainer();
-  if (state.mapTheme === 'dark') {
-    state.mapTheme = 'light';
-    container.classList.remove('map-dark');
-    container.classList.add('map-light');
-    document.getElementById('theme-sun').classList.remove('hidden');
-    document.getElementById('theme-moon').classList.add('hidden');
-  } else {
+  if (state.mapTheme === 'light') {
     state.mapTheme = 'dark';
     container.classList.remove('map-light');
     container.classList.add('map-dark');
     document.getElementById('theme-sun').classList.add('hidden');
     document.getElementById('theme-moon').classList.remove('hidden');
+  } else {
+    state.mapTheme = 'light';
+    container.classList.remove('map-dark');
+    container.classList.add('map-light');
+    document.getElementById('theme-sun').classList.remove('hidden');
+    document.getElementById('theme-moon').classList.add('hidden');
   }
 });
 
@@ -665,7 +746,7 @@ document.getElementById('btn-heatmap').addEventListener('click', () => {
   else if (state.heatLayer) map.removeLayer(state.heatLayer);
 });
 
-// ── Routing ───────────────────────────────────────────────────
+// â”€â”€ Routing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 async function navigateTo(venue) {
   if (!state.bufferPoint && !state.locationMarker) {
     setRouteStatus(t('status.no_location'));
@@ -696,7 +777,7 @@ async function navigateTo(venue) {
 
     const dist = (data.routes[0].distance / 1000).toFixed(1);
     const mins = Math.round(data.routes[0].duration / 60);
-    setRouteStatus(`🚗 ${dist} km · ~${mins} นาที`);
+    setRouteStatus(`ðŸš— ${dist} km Â· ~${mins} à¸™à¸²à¸—à¸µ`);
     document.getElementById('btn-clear-route').classList.remove('hidden');
   } catch {
     setRouteStatus(t('status.route_error'));
@@ -715,7 +796,7 @@ document.getElementById('btn-clear-route').addEventListener('click', () => {
   document.getElementById('route-status').classList.add('hidden');
 });
 
-// ── Favorites ─────────────────────────────────────────────────
+// â”€â”€ Favorites â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function saveFavorites() {
   localStorage.setItem('bma_favs', JSON.stringify([...state.favorites]));
 }
@@ -748,19 +829,22 @@ function renderFavorites() {
   }
   empty.classList.add('hidden');
   list.innerHTML = favVenues.map(v => {
-    const icon = v.types.includes('coworking') ? '💻'
-               : v.types.includes('museum')    ? '🧒'
-               : v.types.includes('recreation')? '🏃'
-               : '📚';
+    const icon = v.types.includes('coworking') ? 'ðŸ’»'
+               : v.types.includes('park')       ? 'ðŸŒ³'
+               : v.types.includes('museum')     ? 'ðŸ�›ï¸�'
+               : v.types.includes('recreation') ? 'ðŸ�ƒ'
+               : v.types.includes('sports')     ? 'âš½'
+               : v.types.includes('sport')      ? 'âš½'
+               : 'ðŸ“š';
     const name = lang === 'th' ? v.name_th : v.name_en;
-    const dist = lang === 'th' ? v.district_th : v.district_en;
+    const dist = v.province || (lang === 'th' ? v.district_th : v.district_en) || '';
     return `<div class="fav-item" data-id="${v.id}">
       <span class="fav-item-icon">${icon}</span>
       <div class="fav-item-info">
         <div class="fav-item-name" title="${name}">${name}</div>
         <div class="fav-item-district">${dist}</div>
       </div>
-      <button class="fav-item-remove" data-remove="${v.id}" title="Remove">✕</button>
+      <button class="fav-item-remove" data-remove="${v.id}" title="Remove">âœ•</button>
     </div>`;
   }).join('');
 
@@ -798,7 +882,7 @@ document.getElementById('btn-close-favorites').addEventListener('click', () => {
   document.getElementById('btn-favorites').classList.remove('active');
 });
 
-// ── Share ─────────────────────────────────────────────────────
+// â”€â”€ Share â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 document.getElementById('btn-share').addEventListener('click', () => {
   const c   = map.getCenter();
   const z   = map.getZoom();
@@ -831,7 +915,7 @@ function restoreFromHash() {
   }
 }
 
-// ── Search ────────────────────────────────────────────────────
+// â”€â”€ Search â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const searchInput = document.getElementById('search-input');
 const searchResults = document.getElementById('search-results');
 
@@ -841,21 +925,25 @@ searchInput.addEventListener('input', () => {
   if (!q) { searchResults.classList.add('hidden'); return; }
 
   const matches = state.venues.filter(v => {
-    return v.name_th.toLowerCase().includes(q) ||
-           v.name_en.toLowerCase().includes(q) ||
-           v.district_th.includes(q) ||
-           v.district_en.toLowerCase().includes(q);
+    return (v.name_th || '').toLowerCase().includes(q) ||
+           (v.name_en || '').toLowerCase().includes(q) ||
+           (v.province || '').includes(q) ||
+           (v.district_th || '').includes(q) ||
+           (v.district_en || '').toLowerCase().includes(q);
   }).slice(0, 8);
 
   if (!matches.length) { searchResults.classList.add('hidden'); return; }
 
   searchResults.innerHTML = matches.map(v => {
-    const icon = v.types.includes('coworking') ? '💻'
-               : v.types.includes('museum')    ? '🧒'
-               : v.types.includes('recreation')? '🏃'
-               : '📚';
+    const icon = v.types.includes('coworking') ? 'ðŸ’»'
+               : v.types.includes('park')       ? 'ðŸŒ³'
+               : v.types.includes('museum')     ? 'ðŸ�›ï¸�'
+               : v.types.includes('recreation') ? 'ðŸ�ƒ'
+               : v.types.includes('sports')     ? 'âš½'
+               : v.types.includes('sport')      ? 'âš½'
+               : 'ðŸ“š';
     const name = lang === 'th' ? v.name_th : v.name_en;
-    const dist = lang === 'th' ? v.district_th : v.district_en;
+    const dist = v.province || (lang === 'th' ? v.district_th : v.district_en) || '';
     return `<div class="search-result-item" data-id="${v.id}">
       <span class="result-icon">${icon}</span>
       <div>
@@ -890,20 +978,20 @@ document.addEventListener('click', e => {
   }
 });
 
-// ── Map Controls ──────────────────────────────────────────────
+// â”€â”€ Map Controls â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 document.getElementById('btn-zoom-in').addEventListener('click',  () => map.zoomIn());
 document.getElementById('btn-zoom-out').addEventListener('click', () => map.zoomOut());
 document.getElementById('btn-fit-bkk').addEventListener('click',  () =>
-  map.setView([13.7563, 100.5018], 12, { animate: true, duration: 0.8 })
+  map.setView([13.0, 101.0], 6, { animate: true, duration: 0.8 })
 );
 
-// ── Sidebar Toggle ────────────────────────────────────────────
+// â”€â”€ Sidebar Toggle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 document.getElementById('sidebar-toggle').addEventListener('click', () => {
   document.getElementById('sidebar').classList.toggle('collapsed');
   setTimeout(() => map.invalidateSize(), 350);
 });
 
-// ── Toast ─────────────────────────────────────────────────────
+// â”€â”€ Toast â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 let toastTimer;
 function showToast(msg) {
   const el = document.getElementById('toast');
@@ -917,7 +1005,7 @@ function showToast(msg) {
   }, 2500);
 }
 
-// ── Boot ──────────────────────────────────────────────────────
+// â”€â”€ Boot â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 loadVenues().then(() => {
   restoreFromHash();
   applyI18n();
