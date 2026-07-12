@@ -201,8 +201,8 @@ function venueIcon(venue) {
   return L.divIcon({
     html: `<div class="custom-marker ${ic.cls}"><span>${ic.emoji}</span> <span class="marker-text" style="font-size:11px;font-weight:600;margin-left:2px;color:var(--text-primary);">${name}</span></div>`,
     className: '',
-    iconSize:   [140, 28],
-    iconAnchor: [70, 14],
+    iconSize:   [0, 0],
+    iconAnchor: [12, 14],
     popupAnchor:[0, -20],
   });
 }
