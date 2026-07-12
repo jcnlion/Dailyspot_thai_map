@@ -162,6 +162,8 @@ const state = {
   routeLayer:    null,
   visitorChart:  null,
   selectedVenue: null,
+  activeMarker:  null,
+  activeMarkerVenue: null,
   mapTheme:      'light',     // 'light' or 'dark'
   favorites:     new Set(JSON.parse(localStorage.getItem('bma_favs') || '[]')),
 };
@@ -191,7 +193,7 @@ const ICONS = {
   park:        { emoji: '🌳', cls: 'marker-park'        },
 };
 
-function venueIcon(venue) {
+function venueIcon(venue, isSelected = false) {
   const type = venue.types.includes('coworking') ? 'coworking'
              : venue.types.includes('museum')    ? 'museum'
              : venue.types.includes('recreation')? 'recreation'
@@ -201,13 +203,24 @@ function venueIcon(venue) {
              : 'library';
   const ic = ICONS[type];
   const name = lang === 'th' ? venue.name_th : venue.name_en;
-  return L.divIcon({
-    html: `<div class="custom-marker ${ic.cls}"><span>${ic.emoji}</span> <span class="marker-text" style="font-size:11px;font-weight:600;margin-left:2px;color:var(--text-primary);">${name}</span></div>`,
-    className: '',
-    iconSize:   [0, 0],
-    iconAnchor: [12, 14],
-    popupAnchor:[0, -20],
-  });
+  
+  if (isSelected) {
+    return L.divIcon({
+      html: `<div class="custom-marker selected ${ic.cls}"><span>${ic.emoji}</span> <span class="marker-text" style="font-size:11px;font-weight:700;margin-left:4px;color:var(--text-primary);">${name}</span></div>`,
+      className: '',
+      iconSize:   [0, 0],
+      iconAnchor: [20, 15],
+      popupAnchor:[0, -22],
+    });
+  } else {
+    return L.divIcon({
+      html: `<div class="custom-marker mini ${ic.cls}"><span>${ic.emoji}</span></div>`,
+      className: '',
+      iconSize:   [0, 0],
+      iconAnchor: [15, 15],
+      popupAnchor:[0, -18],
+    });
+  }
 }
 
 function venueType(venue) {
@@ -274,10 +287,15 @@ function renderMarkers() {
 
   const visible = visibleVenues();
   visible.forEach(venue => {
-    const marker = L.marker([venue.lat, venue.lng], { icon: venueIcon(venue) });
+    const isSelected = state.selectedVenue && state.selectedVenue.id === venue.id;
+    const marker = L.marker([venue.lat, venue.lng], { icon: venueIcon(venue, isSelected) });
     marker.on('click', () => selectVenue(venue));
     state.markers[venue.id] = marker;
     state.clusterGroup.addLayer(marker);
+    if (isSelected) {
+      state.activeMarker = marker;
+      state.activeMarkerVenue = venue;
+    }
   });
 }
 
@@ -308,6 +326,10 @@ document.getElementById('category-filter').addEventListener('change', e => {
   if (cb.type !== 'checkbox') return;
   if (cb.checked) state.activeTypes.add(cb.value);
   else state.activeTypes.delete(cb.value);
+  
+  const chip = cb.closest('.filter-chip');
+  if (chip) chip.classList.toggle('active', cb.checked);
+  
   renderMarkers();
   updateFilterCounts();
   buildHeatLayer();
@@ -454,12 +476,29 @@ function updateBufferStatus() {
 
 // ── Venue Selection & Detail Panel ──────────────────────────â”€
 function selectVenue(venue) {
+  // Reset previously active marker if any
+  if (state.activeMarker && state.activeMarkerVenue) {
+    try {
+      state.activeMarker.setIcon(venueIcon(state.activeMarkerVenue, false));
+      state.activeMarker.setZIndexOffset(0);
+    } catch(e) {}
+  }
+
   state.selectedVenue = venue;
-  // Fly to venue
   map.flyTo([venue.lat, venue.lng], Math.max(map.getZoom(), 15), { duration: 0.8 });
   showDetail(venue);
-  // Close favorites if open
   document.getElementById('favorites-panel').classList.add('hidden');
+
+  // Set newly active marker icon
+  const marker = state.markers[venue.id];
+  if (marker) {
+    try {
+      marker.setIcon(venueIcon(venue, true));
+      marker.setZIndexOffset(1000);
+      state.activeMarker = marker;
+      state.activeMarkerVenue = venue;
+    } catch(e) {}
+  }
 }
 
 function showDetail(venue) {
@@ -536,6 +575,12 @@ function showDetail(venue) {
 
   // Navigate button
   document.getElementById('btn-navigate').onclick = () => navigateTo(venue);
+
+  // Google Maps button
+  document.getElementById('btn-google-maps').onclick = () => {
+    const url = `https://www.google.com/maps/search/?api=1&query=${venue.lat},${venue.lng}`;
+    window.open(url, '_blank');
+  };
 }
 
 function checkOpenNow(venue) {
@@ -554,6 +599,14 @@ function checkOpenNow(venue) {
 
 document.getElementById('btn-close-detail').addEventListener('click', () => {
   document.getElementById('detail-panel').classList.add('hidden');
+  if (state.activeMarker && state.activeMarkerVenue) {
+    try {
+      state.activeMarker.setIcon(venueIcon(state.activeMarkerVenue, false));
+      state.activeMarker.setZIndexOffset(0);
+    } catch(e) {}
+  }
+  state.activeMarker = null;
+  state.activeMarkerVenue = null;
   state.selectedVenue = null;
 });
 
@@ -985,4 +1038,9 @@ function showToast(msg) {
 loadVenues().then(() => {
   restoreFromHash();
   applyI18n();
+  // Init active class on checked filter chips
+  document.querySelectorAll('.filter-chip input[type="checkbox"]').forEach(cb => {
+    const chip = cb.closest('.filter-chip');
+    if (chip) chip.classList.toggle('active', cb.checked);
+  });
 });
