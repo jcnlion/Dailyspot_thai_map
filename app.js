@@ -142,7 +142,7 @@ function applyI18n() {
   });
 }
 
-// â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── State ────────────────────────────────────────────────────â”€
 const state = {
   venues:        [],
   activeTypes:   new Set(['library', 'coworking', 'museum', 'recreation', 'sports', 'sport', 'park']),
@@ -163,7 +163,7 @@ const state = {
   favorites:     new Set(JSON.parse(localStorage.getItem('bma_favs') || '[]')),
 };
 
-// â”€â”€ Map Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Map Init ──────────────────────────────────────────────────
 const map = L.map('map', {
   center: [13.0, 101.0],
   zoom: 6,
@@ -177,15 +177,15 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
 }).addTo(map);
 
-// â”€â”€ Marker Icons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Marker Icons ──────────────────────────────────────────────
 const ICONS = {
-  library:     { emoji: 'ðŸ“š', cls: 'marker-library'    },
-  coworking:   { emoji: 'ðŸ’»', cls: 'marker-coworking'   },
-  museum:      { emoji: 'ðŸ�›ï¸�', cls: 'marker-museum'      },
-  recreation:  { emoji: 'ðŸ�ƒ', cls: 'marker-recreation'  },
-  sports:      { emoji: 'âš½', cls: 'marker-sports'      },
-  sport:       { emoji: 'âš½', cls: 'marker-sports'      },
-  park:        { emoji: 'ðŸŒ³', cls: 'marker-park'        },
+  library:     { emoji: '📚', cls: 'marker-library'    },
+  coworking:   { emoji: '💻', cls: 'marker-coworking'   },
+  museum:      { emoji: '🏛️', cls: 'marker-museum'      },
+  recreation:  { emoji: '🏃', cls: 'marker-recreation'  },
+  sports:      { emoji: '⚽', cls: 'marker-sports'      },
+  sport:       { emoji: '⚽', cls: 'marker-sports'      },
+  park:        { emoji: '🌳', cls: 'marker-park'        },
 };
 
 function venueIcon(venue) {
@@ -216,7 +216,7 @@ function venueType(venue) {
   return 'library';
 }
 
-// â”€â”€ Load Venues â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Load Venues ──────────────────────────────────────────────â”€
 async function loadVenues() {
   const res  = await fetch('data/venues.json');
   const data = await res.json();
@@ -248,7 +248,7 @@ async function loadVenues() {
   // Build province dropdown
   const provinces = [...new Set(state.venues
     .map(v => v.province)
-    .filter(p => p && p !== 'à¹„à¸¡à¹ˆà¸£à¸°à¸šà¸¸à¸ˆà¸±à¸‡à¸«à¸§à¸±à¸”')
+    .filter(p => p && p !== 'ไม่ระบุจังหวัด')
   )].sort((a, b) => a.localeCompare(b, 'th'));
   const sel = document.getElementById('province-select');
   provinces.forEach(p => {
@@ -298,7 +298,7 @@ function visibleVenues() {
   });
 }
 
-// â”€â”€ Filter â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Filter ────────────────────────────────────────────────────
 document.getElementById('category-filter').addEventListener('change', e => {
   const cb = e.target;
   if (cb.type !== 'checkbox') return;
@@ -334,7 +334,7 @@ function updateFilterCounts() {
   });
 }
 
-// â”€â”€ Buffer + Location â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Buffer + Location ────────────────────────────────────────â”€
 const slider     = document.getElementById('buffer-slider');
 const bufferKmEl = document.getElementById('buffer-km');
 
@@ -448,7 +448,7 @@ function updateBufferStatus() {
   setBufferStatus(t('status.found', count, state.bufferRadius.toFixed(1)));
 }
 
-// â”€â”€ Venue Selection & Detail Panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Venue Selection & Detail Panel ──────────────────────────â”€
 function selectVenue(venue) {
   state.selectedVenue = venue;
   // Fly to venue
@@ -553,7 +553,7 @@ document.getElementById('btn-close-detail').addEventListener('click', () => {
   state.selectedVenue = null;
 });
 
-// â”€â”€ Visitor & Simulated Chart (Option A) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Visitor & Simulated Chart (Option A) ──────────────────────
 function renderSimulatedOrMonthlyChart(venue) {
   if (state.visitorChart) { state.visitorChart.destroy(); state.visitorChart = null; }
   const ctx = document.getElementById('visitors-chart').getContext('2d');
@@ -592,8 +592,8 @@ function renderSimulatedOrMonthlyChart(venue) {
     const currentDay = new Date().getDay(); // 0 = Sun, 1 = Mon ...
     const isWeekend = (currentDay === 0 || currentDay === 6);
     document.getElementById('chart-total-badge').textContent = isWeekend
-      ? (lang === 'th' ? 'à¸ˆà¸³à¸¥à¸­à¸‡: à¸„à¸™à¸„à¹ˆà¸­à¸™à¸‚à¹‰à¸²à¸‡à¸«à¸™à¸²à¹�à¸™à¹ˆà¸™' : 'Simulated: Moderately Busy')
-      : (lang === 'th' ? 'à¸ˆà¸³à¸¥à¸­à¸‡: à¸£à¸°à¸”à¸±à¸šà¸›à¸�à¸•à¸´' : 'Simulated: Normal');
+      ? (lang === 'th' ? 'จำลอง: คนค่อนข้างหนาแน่น' : 'Simulated: Moderately Busy')
+      : (lang === 'th' ? 'จำลอง: ระดับปกติ' : 'Simulated: Normal');
 
     // Generate simulated occupancy pattern (10:00 - 20:00)
     const hoursLabels = ['10:00','12:00','14:00','16:00','18:00','20:00'];
@@ -618,7 +618,7 @@ function renderSimulatedOrMonthlyChart(venue) {
       data: {
         labels: hoursLabels,
         datasets: [{
-          label: lang === 'th' ? 'à¸„à¸§à¸²à¸¡à¸«à¸™à¸²à¹�à¸™à¹ˆà¸™ (%)' : 'Occupancy (%)',
+          label: lang === 'th' ? 'ความหนาแน่น (%)' : 'Occupancy (%)',
           data: simulatedData,
           backgroundColor: 'rgba(79, 158, 255, 0.15)',
           borderColor: 'rgba(79, 158, 255, 0.85)',
@@ -648,7 +648,7 @@ function renderSimulatedOrMonthlyChart(venue) {
   }
 }
 
-// â”€â”€ Crowdedness Indicator â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Crowdedness Indicator ────────────────────────────────────
 function renderCrowdedness(busyHoursStr) {
   const container = document.getElementById('crowdedness-bars');
   const slots = busyHoursStr.split(',').map(s => s.trim());
@@ -678,7 +678,7 @@ function renderCrowdedness(busyHoursStr) {
   }).join('');
 }
 
-// â”€â”€ Heatmap â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Heatmap ──────────────────────────────────────────────────â”€
 document.getElementById('btn-theme').addEventListener('click', () => {
   const container = map.getContainer();
   if (state.mapTheme === 'light') {
@@ -718,7 +718,7 @@ document.getElementById('btn-heatmap').addEventListener('click', () => {
   else if (state.heatLayer) map.removeLayer(state.heatLayer);
 });
 
-// â”€â”€ Routing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Routing ──────────────────────────────────────────────────â”€
 async function navigateTo(venue) {
   if (!state.bufferPoint && !state.locationMarker) {
     setRouteStatus(t('status.no_location'));
@@ -749,7 +749,7 @@ async function navigateTo(venue) {
 
     const dist = (data.routes[0].distance / 1000).toFixed(1);
     const mins = Math.round(data.routes[0].duration / 60);
-    setRouteStatus(`ðŸš— ${dist} km Â· ~${mins} à¸™à¸²à¸—à¸µ`);
+    setRouteStatus(`🚗 ${dist} km · ~${mins} นาที`);
     document.getElementById('btn-clear-route').classList.remove('hidden');
   } catch {
     setRouteStatus(t('status.route_error'));
@@ -768,7 +768,7 @@ document.getElementById('btn-clear-route').addEventListener('click', () => {
   document.getElementById('route-status').classList.add('hidden');
 });
 
-// â”€â”€ Favorites â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Favorites ────────────────────────────────────────────────â”€
 function saveFavorites() {
   localStorage.setItem('bma_favs', JSON.stringify([...state.favorites]));
 }
@@ -854,7 +854,7 @@ document.getElementById('btn-close-favorites').addEventListener('click', () => {
   document.getElementById('btn-favorites').classList.remove('active');
 });
 
-// â”€â”€ Share â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Share ────────────────────────────────────────────────────â”€
 document.getElementById('btn-share').addEventListener('click', () => {
   const c   = map.getCenter();
   const z   = map.getZoom();
@@ -887,7 +887,7 @@ function restoreFromHash() {
   }
 }
 
-// â”€â”€ Search â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Search ────────────────────────────────────────────────────
 const searchInput = document.getElementById('search-input');
 const searchResults = document.getElementById('search-results');
 
@@ -950,20 +950,20 @@ document.addEventListener('click', e => {
   }
 });
 
-// â”€â”€ Map Controls â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Map Controls ──────────────────────────────────────────────
 document.getElementById('btn-zoom-in').addEventListener('click',  () => map.zoomIn());
 document.getElementById('btn-zoom-out').addEventListener('click', () => map.zoomOut());
 document.getElementById('btn-fit-bkk').addEventListener('click',  () =>
   map.setView([13.0, 101.0], 6, { animate: true, duration: 0.8 })
 );
 
-// â”€â”€ Sidebar Toggle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Sidebar Toggle ────────────────────────────────────────────
 document.getElementById('sidebar-toggle').addEventListener('click', () => {
   document.getElementById('sidebar').classList.toggle('collapsed');
   setTimeout(() => map.invalidateSize(), 350);
 });
 
-// â”€â”€ Toast â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Toast ────────────────────────────────────────────────────â”€
 let toastTimer;
 function showToast(msg) {
   const el = document.getElementById('toast');
@@ -977,7 +977,7 @@ function showToast(msg) {
   }, 2500);
 }
 
-// â”€â”€ Boot â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Boot ──────────────────────────────────────────────────────
 loadVenues().then(() => {
   restoreFromHash();
   applyI18n();
