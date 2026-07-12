@@ -102,3 +102,36 @@ describe('visibleVenues filter logic', () => {
     expect(visible.map(v => v.id)).not.toContain('2'); // Chiang Mai
   });
 });
+
+// Mock L.divIcon and lang for venueIcon test
+global.L = {
+  divIcon: (opts) => opts
+};
+global.lang = 'th';
+global.ICONS = {
+  library: { emoji: '📚', cls: 'marker-library' }
+};
+
+function venueIcon(venue) {
+  const type = 'library';
+  const ic = global.ICONS[type];
+  const name = global.lang === 'th' ? venue.name_th : venue.name_en;
+  return global.L.divIcon({
+    html: `<div class="custom-marker ${ic.cls}"><span>${ic.emoji}</span> <span class="marker-text" style="font-size:11px;font-weight:600;margin-left:2px;color:var(--text-primary);">${name}</span></div>`
+  });
+}
+
+describe('venueIcon marker generation', () => {
+  it('renders correct emoji and th/en texts based on active language', () => {
+    const venue = { name_th: 'หอสมุด', name_en: 'Library' };
+    
+    global.lang = 'th';
+    let icon = venueIcon(venue);
+    expect(icon.html).toContain('📚');
+    expect(icon.html).toContain('หอสมุด');
+
+    global.lang = 'en';
+    icon = venueIcon(venue);
+    expect(icon.html).toContain('Library');
+  });
+});

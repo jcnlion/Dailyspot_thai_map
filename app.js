@@ -114,6 +114,9 @@ const T = {
     'pool.close':        'Cleaning day: %s',
   }
 };
+
+let lang = 'th';
+
 function t(key, ...args) {
   let str = (T[lang][key] || T.th[key] || key);
   args.forEach(a => { str = str.replace('%d', a).replace('%s', a); });
