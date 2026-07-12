@@ -24,7 +24,7 @@
     ],
     "coverage": "Thailand",
     "osm_fetch_date": "2026-07-12",
-    "total_venues": 2127
+    "total_venues": 2135
   },
   "venues": [
     {
@@ -45783,6 +45783,376 @@
         "6": {
           "o": "05:00",
           "c": "21:00"
+        }
+      }
+    },
+    {
+      "id": "museum_osm_bacc",
+      "name_th": "หอศิลปวัฒนธรรมแห่งกรุงเทพมหานคร (BACC)",
+      "name_en": "Bangkok Art and Culture Centre (BACC)",
+      "types": [
+        "museum"
+      ],
+      "address_th": "939 ถนนพระรามที่ 1 แขวงวังใหม่ เขตปทุมวัน กรุงเทพมหานคร",
+      "address_en": "939 Rama I Rd, Wang Mai, Pathum Wan, Bangkok",
+      "district_th": "ปทุมวัน",
+      "district_en": "Pathum Wan",
+      "province": "กรุงเทพมหานคร",
+      "lat": 13.7466,
+      "lng": 100.5303,
+      "hours_th": "อังคาร–อาทิตย์ 10:00–20:00 น. (ปิดวันจันทร์)",
+      "hours_en": "Tue–Sun 10:00–20:00 (Closed Mon)",
+      "phone": "02-214 6630",
+      "schedule": {
+        "0": {
+          "o": "10:00",
+          "c": "20:00"
+        },
+        "1": null,
+        "2": {
+          "o": "10:00",
+          "c": "20:00"
+        },
+        "3": {
+          "o": "10:00",
+          "c": "20:00"
+        },
+        "4": {
+          "o": "10:00",
+          "c": "20:00"
+        },
+        "5": {
+          "o": "10:00",
+          "c": "20:00"
+        },
+        "6": {
+          "o": "10:00",
+          "c": "20:00"
+        }
+      }
+    },
+    {
+      "id": "park_osm_chula100",
+      "name_th": "อุทยาน 100 ปี จุฬาลงกรณ์มหาวิทยาลัย",
+      "name_en": "Chulalongkorn University Centenary Park",
+      "types": [
+        "park"
+      ],
+      "address_th": "ซอยจุฬาลงกรณ์ 5 แขวงวังใหม่ เขตปทุมวัน กรุงเทพมหานคร",
+      "address_en": "Soi Chulalongkorn 5, Wang Mai, Pathum Wan, Bangkok",
+      "district_th": "ปทุมวัน",
+      "district_en": "Pathum Wan",
+      "province": "กรุงเทพมหานคร",
+      "lat": 13.7397,
+      "lng": 100.5229,
+      "hours_th": "เปิดทุกวัน 06:00–20:00 น.",
+      "hours_en": "Daily 06:00–20:00",
+      "schedule": {
+        "0": {
+          "o": "06:00",
+          "c": "20:00"
+        },
+        "1": {
+          "o": "06:00",
+          "c": "20:00"
+        },
+        "2": {
+          "o": "06:00",
+          "c": "20:00"
+        },
+        "3": {
+          "o": "06:00",
+          "c": "20:00"
+        },
+        "4": {
+          "o": "06:00",
+          "c": "20:00"
+        },
+        "5": {
+          "o": "06:00",
+          "c": "20:00"
+        },
+        "6": {
+          "o": "06:00",
+          "c": "20:00"
+        }
+      }
+    },
+    {
+      "id": "park_osm_queensirikit",
+      "name_th": "สวนสมเด็จพระนางเจ้าสิริกิติ์ฯ",
+      "name_en": "Queen Sirikit Park",
+      "types": [
+        "park"
+      ],
+      "address_th": "ถนนกำแพงเพชร 2 แขวงจตุจักร เขตจตุจักร กรุงเทพมหานคร",
+      "address_en": "Kamphaeng Phet 2 Rd, Chatuchak, Bangkok",
+      "district_th": "จตุจักร",
+      "district_en": "Chatuchak",
+      "province": "กรุงเทพมหานคร",
+      "lat": 13.8055,
+      "lng": 100.5502,
+      "hours_th": "เปิดทุกวัน 05:00–20:00 น.",
+      "hours_en": "Daily 05:00–20:00",
+      "schedule": {
+        "0": {
+          "o": "05:00",
+          "c": "20:00"
+        },
+        "1": {
+          "o": "05:00",
+          "c": "20:00"
+        },
+        "2": {
+          "o": "05:00",
+          "c": "20:00"
+        },
+        "3": {
+          "o": "05:00",
+          "c": "20:00"
+        },
+        "4": {
+          "o": "05:00",
+          "c": "20:00"
+        },
+        "5": {
+          "o": "05:00",
+          "c": "20:00"
+        },
+        "6": {
+          "o": "05:00",
+          "c": "20:00"
+        }
+      }
+    },
+    {
+      "id": "park_osm_santiphap",
+      "name_th": "สวนสันติภาพ",
+      "name_en": "Santiphap Park",
+      "types": [
+        "park"
+      ],
+      "address_th": "ถนนราชวิถี แขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร",
+      "address_en": "Ratchawithi Rd, Thanon Phaya Thai, Ratchathewi, Bangkok",
+      "district_th": "ราชเทวี",
+      "district_en": "Ratchathewi",
+      "province": "กรุงเทพมหานคร",
+      "lat": 13.7599,
+      "lng": 100.5392,
+      "hours_th": "เปิดทุกวัน 05:00–21:00 น.",
+      "hours_en": "Daily 05:00–21:00",
+      "schedule": {
+        "0": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "1": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "2": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "3": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "4": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "5": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "6": {
+          "o": "05:00",
+          "c": "21:00"
+        }
+      }
+    },
+    {
+      "id": "park_osm_serithai",
+      "name_th": "สวนเสรีไทย",
+      "name_en": "Seri Thai Park",
+      "types": [
+        "park"
+      ],
+      "address_th": "ถนนเสรีไทย แขวงคลองกุ่ม เขตบึงกุ่ม กรุงเทพมหานคร",
+      "address_en": "Seri Thai Rd, Khlong Kum, Bueng Kum, Bangkok",
+      "district_th": "บึงกุ่ม",
+      "district_en": "Bueng Kum",
+      "province": "กรุงเทพมหานคร",
+      "lat": 13.7844,
+      "lng": 100.6725,
+      "hours_th": "เปิดทุกวัน 05:00–20:00 น.",
+      "hours_en": "Daily 05:00–20:00",
+      "schedule": {
+        "0": {
+          "o": "05:00",
+          "c": "20:00"
+        },
+        "1": {
+          "o": "05:00",
+          "c": "20:00"
+        },
+        "2": {
+          "o": "05:00",
+          "c": "20:00"
+        },
+        "3": {
+          "o": "05:00",
+          "c": "20:00"
+        },
+        "4": {
+          "o": "05:00",
+          "c": "20:00"
+        },
+        "5": {
+          "o": "05:00",
+          "c": "20:00"
+        },
+        "6": {
+          "o": "05:00",
+          "c": "20:00"
+        }
+      }
+    },
+    {
+      "id": "park_osm_thonburirom",
+      "name_th": "สวนธนบุรีรมย์",
+      "name_en": "Thonburirom Park",
+      "types": [
+        "park"
+      ],
+      "address_th": "ถนนประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร",
+      "address_en": "Pracha Uthit Rd, Bang Mot, Thung Khru, Bangkok",
+      "district_th": "ทุ่งครุ",
+      "district_en": "Thung Khru",
+      "province": "กรุงเทพมหานคร",
+      "lat": 13.6521,
+      "lng": 100.4939,
+      "hours_th": "เปิดทุกวัน 05:00–21:00 น.",
+      "hours_en": "Daily 05:00–21:00",
+      "schedule": {
+        "0": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "1": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "2": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "3": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "4": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "5": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "6": {
+          "o": "05:00",
+          "c": "21:00"
+        }
+      }
+    },
+    {
+      "id": "museum_osm_rattanakosin",
+      "name_th": "อาคารนิทรรศน์รัตนโกสินทร์",
+      "name_en": "Rattanakosin Exhibition Hall",
+      "types": [
+        "museum"
+      ],
+      "address_th": "100 ถนนราชดำเนินกลาง แขวงบวรนิเวศ เขตพระนคร กรุงเทพมหานคร",
+      "address_en": "100 Ratchadamnoen Klang Rd, Bowon Niwet, Phra Nakhon, Bangkok",
+      "district_th": "พระนคร",
+      "district_en": "Phra Nakhon",
+      "province": "กรุงเทพมหานคร",
+      "lat": 13.7562,
+      "lng": 100.5049,
+      "hours_th": "อังคาร–อาทิตย์ 09:00–17:00 น. (ปิดวันจันทร์)",
+      "hours_en": "Tue–Sun 09:00–17:00 (Closed Mon)",
+      "phone": "02-621 0044",
+      "schedule": {
+        "0": {
+          "o": "09:00",
+          "c": "17:00"
+        },
+        "1": null,
+        "2": {
+          "o": "09:00",
+          "c": "17:00"
+        },
+        "3": {
+          "o": "09:00",
+          "c": "17:00"
+        },
+        "4": {
+          "o": "09:00",
+          "c": "17:00"
+        },
+        "5": {
+          "o": "09:00",
+          "c": "17:00"
+        },
+        "6": {
+          "o": "09:00",
+          "c": "17:00"
+        }
+      }
+    },
+    {
+      "id": "museum_osm_bangkok_folk",
+      "name_th": "พิพิธภัณฑ์ชาวบางกอก (พิพิธภัณฑ์บางกอก)",
+      "name_en": "Bangkok Folk Museum (Bangkok Museum)",
+      "types": [
+        "museum"
+      ],
+      "address_th": "273 ซอยเจริญกรุง 43 แขวงสี่พระยา เขตบางรัก กรุงเทพมหานคร",
+      "address_en": "273 Soi Charoen Krung 43, Si Phraya, Bang Rak, Bangkok",
+      "district_th": "บางรัก",
+      "district_en": "Bang Rak",
+      "province": "กรุงเทพมหานคร",
+      "lat": 13.7279,
+      "lng": 100.5186,
+      "hours_th": "อังคาร–อาทิตย์ 09:00–16:00 น. (ปิดวันจันทร์)",
+      "hours_en": "Tue–Sun 09:00–16:00 (Closed Mon)",
+      "phone": "02-233 7027",
+      "schedule": {
+        "0": {
+          "o": "09:00",
+          "c": "16:00"
+        },
+        "1": null,
+        "2": {
+          "o": "09:00",
+          "c": "16:00"
+        },
+        "3": {
+          "o": "09:00",
+          "c": "16:00"
+        },
+        "4": {
+          "o": "09:00",
+          "c": "16:00"
+        },
+        "5": {
+          "o": "09:00",
+          "c": "16:00"
+        },
+        "6": {
+          "o": "09:00",
+          "c": "16:00"
         }
       }
     }
