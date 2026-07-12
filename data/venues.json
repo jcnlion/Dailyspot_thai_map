@@ -24,7 +24,7 @@
     ],
     "coverage": "Thailand",
     "osm_fetch_date": "2026-07-12",
-    "total_venues": 2150
+    "total_venues": 2155
   },
   "venues": [
     {
@@ -46829,6 +46829,239 @@
       "province": "กรุงเทพมหานคร",
       "lat": 13.6974,
       "lng": 100.5332,
+      "hours_th": "เปิดทุกวัน 05:00 - 21:00 น.",
+      "hours_en": "Daily 05:00 - 21:00",
+      "schedule": {
+        "0": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "1": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "2": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "3": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "4": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "5": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "6": {
+          "o": "05:00",
+          "c": "21:00"
+        }
+      }
+    },
+    {
+      "id": "library_bot_learning_center",
+      "name_th": "ศูนย์การเรียนรู้ธนาคารแห่งประเทศไทย (หอสมุดริมน้ำ)",
+      "name_en": "Bank of Thailand Learning Center (BOT Library)",
+      "types": [
+        "library",
+        "museum",
+        "coworking"
+      ],
+      "address_th": "273 ถนนสามเสน แขวงวัดสามพระยา เขตพระนคร กรุงเทพมหานคร (ใต้สะพานพระราม 8)",
+      "address_en": "273 Samsen Rd, Wat Sam Phraya, Phra Nakhon, Bangkok",
+      "district_th": "พระนคร",
+      "district_en": "Phra Nakhon",
+      "province": "กรุงเทพมหานคร",
+      "lat": 13.769904,
+      "lng": 100.499645,
+      "hours_th": "อังคาร–อาทิตย์ 09:30–20:00 น. (ปิดวันจันทร์)",
+      "hours_en": "Tue–Sun 09:30–20:00 (Closed Mon)",
+      "phone": "02-356 7766",
+      "schedule": {
+        "0": {
+          "o": "09:30",
+          "c": "20:00"
+        },
+        "1": null,
+        "2": {
+          "o": "09:30",
+          "c": "20:00"
+        },
+        "3": {
+          "o": "09:30",
+          "c": "20:00"
+        },
+        "4": {
+          "o": "09:30",
+          "c": "20:00"
+        },
+        "5": {
+          "o": "09:30",
+          "c": "20:00"
+        },
+        "6": {
+          "o": "09:30",
+          "c": "20:00"
+        }
+      }
+    },
+    {
+      "id": "museum_moca_bangkok",
+      "name_th": "พิพิธภัณฑ์ศิลปะไทยร่วมสมัย (MOCA Bangkok)",
+      "name_en": "Museum of Contemporary Art (MOCA Bangkok)",
+      "types": [
+        "museum"
+      ],
+      "address_th": "499 ถนนกำแพงเพชร 6 แขวงลาดยาว เขตจตุจักร กรุงเทพมหานคร",
+      "address_en": "499 Kamphaeng Phet 6 Rd, Lat Yao, Chatuchak, Bangkok",
+      "district_th": "จตุจักร",
+      "district_en": "Chatuchak",
+      "province": "กรุงเทพมหานคร",
+      "lat": 13.852924,
+      "lng": 100.562303,
+      "hours_th": "อังคาร–อาทิตย์ 10:00–18:00 น. (ปิดวันจันทร์)",
+      "hours_en": "Tue–Sun 10:00–18:00 (Closed Mon)",
+      "phone": "02-016 5666",
+      "schedule": {
+        "0": {
+          "o": "10:00",
+          "c": "18:00"
+        },
+        "1": null,
+        "2": {
+          "o": "10:00",
+          "c": "18:00"
+        },
+        "3": {
+          "o": "10:00",
+          "c": "18:00"
+        },
+        "4": {
+          "o": "10:00",
+          "c": "18:00"
+        },
+        "5": {
+          "o": "10:00",
+          "c": "18:00"
+        },
+        "6": {
+          "o": "10:00",
+          "c": "18:00"
+        }
+      }
+    },
+    {
+      "id": "park_bma_rat_burana_bridge",
+      "name_th": "สวนสาธารณะเฉลิมพระเกียรติ 6 รอบ (ใต้สะพานพระราม 9 ฝั่งราษฎร์บูรณะ)",
+      "name_en": "Rat Burana Rama IX Bridge Park",
+      "types": [
+        "park"
+      ],
+      "address_th": "ถนนราษฎร์บูรณะ แขวงราษฎร์บูรณะ เขตราษฎร์บูรณะ กรุงเทพมหานคร",
+      "address_en": "Rat Burana Rd, Rat Burana, Bangkok",
+      "district_th": "ราษฎร์บูรณะ",
+      "district_en": "Rat Burana",
+      "province": "กรุงเทพมหานคร",
+      "lat": 13.6826,
+      "lng": 100.5181,
+      "hours_th": "เปิดทุกวัน 05:00 - 21:00 น.",
+      "hours_en": "Daily 05:00 - 21:00",
+      "schedule": {
+        "0": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "1": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "2": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "3": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "4": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "5": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "6": {
+          "o": "05:00",
+          "c": "21:00"
+        }
+      }
+    },
+    {
+      "id": "park_bma_benjakitti_forest",
+      "name_th": "สวนป่าเบญจกิติ (ส่วนขยาย Skywalk & คลองส่งน้ำ)",
+      "name_en": "Benjakitti Forest Park (Skywalk Extension)",
+      "types": [
+        "park"
+      ],
+      "address_th": "ถนนรัชดาภิเษก แขวงคลองเตย เขตคลองเตย กรุงเทพมหานคร",
+      "address_en": "Ratchadaphisek Rd, Khlong Toei, Bangkok",
+      "district_th": "คลองเตย",
+      "district_en": "Khlong Toei",
+      "province": "กรุงเทพมหานคร",
+      "lat": 13.7271,
+      "lng": 100.5539,
+      "hours_th": "เปิดทุกวัน 05:00 - 21:00 น.",
+      "hours_en": "Daily 05:00 - 21:00",
+      "schedule": {
+        "0": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "1": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "2": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "3": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "4": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "5": {
+          "o": "05:00",
+          "c": "21:00"
+        },
+        "6": {
+          "o": "05:00",
+          "c": "21:00"
+        }
+      }
+    },
+    {
+      "id": "park_osm_lat_pho",
+      "name_th": "สวนสุขภาพลัดโพธิ์ (ใต้สะพานภูมิพล ฝั่งพระประแดง)",
+      "name_en": "Lat Pho Park (Bhumibol Bridge Samut Prakan)",
+      "types": [
+        "park"
+      ],
+      "address_th": "ใต้สะพานภูมิพล ถนนสุขสวัสดิ์ แขวงทรงคนอง อำเภอพระประแดง สมุทรปราการ",
+      "address_en": "Under Bhumibol Bridge, Song Khanong, Phra Pradaeng, Samut Prakan",
+      "district_th": "พระประแดง",
+      "district_en": "Phra Pradaeng",
+      "province": "สมุทรปราการ",
+      "lat": 13.6625,
+      "lng": 100.5401,
       "hours_th": "เปิดทุกวัน 05:00 - 21:00 น.",
       "hours_en": "Daily 05:00 - 21:00",
       "schedule": {
