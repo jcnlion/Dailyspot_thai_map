@@ -135,3 +135,50 @@ describe('venueIcon marker generation', () => {
     expect(icon.html).toContain('Library');
   });
 });
+
+// Mock merge logic for testing
+function mergeCustomVenues(baseVenues, localDataStr) {
+  if (!localDataStr) return baseVenues;
+  try {
+    const customVenues = JSON.parse(localDataStr);
+    const venuesMap = {};
+    baseVenues.forEach(v => { venuesMap[v.id] = v; });
+    
+    customVenues.forEach(cv => {
+      if (cv.isDeleted) {
+        delete venuesMap[cv.id];
+      } else {
+        venuesMap[cv.id] = cv;
+      }
+    });
+    return Object.values(venuesMap);
+  } catch (e) {
+    return baseVenues;
+  }
+}
+
+describe('mergeCustomVenues localStorage merge logic', () => {
+  it('appends a new custom venue', () => {
+    const base = [{ id: '1', name_th: 'หอสมุด' }];
+    const local = JSON.stringify([{ id: 'custom_1', name_th: 'สนามเด็กเล่นใหม่' }]);
+    const result = mergeCustomVenues(base, local);
+    expect(result).toHaveLength(2);
+    expect(result.map(v => v.id)).toContain('custom_1');
+  });
+
+  it('deletes an existing venue when isDeleted is true', () => {
+    const base = [{ id: '1', name_th: 'หอสมุด' }, { id: '2', name_th: 'สวนสุขภาพ' }];
+    const local = JSON.stringify([{ id: '1', isDeleted: true }]);
+    const result = mergeCustomVenues(base, local);
+    expect(result).toHaveLength(1);
+    expect(result[0].id).toBe('2');
+  });
+
+  it('updates an existing venue with new values', () => {
+    const base = [{ id: '1', name_th: 'หอสมุดเดิม' }];
+    const local = JSON.stringify([{ id: '1', name_th: 'หอสมุดใหม่' }]);
+    const result = mergeCustomVenues(base, local);
+    expect(result).toHaveLength(1);
+    expect(result[0].name_th).toBe('หอสมุดใหม่');
+  });
+});

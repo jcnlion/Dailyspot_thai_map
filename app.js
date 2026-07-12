@@ -239,6 +239,28 @@ async function loadVenues() {
   const data = await res.json();
   state.venues = data.venues;
   state.meta   = data.meta;
+
+  // Merge custom venues from localStorage
+  const localData = localStorage.getItem('dailyspot_custom_venues');
+  if (localData) {
+    try {
+      const customVenues = JSON.parse(localData);
+      const venuesMap = {};
+      state.venues.forEach(v => { venuesMap[v.id] = v; });
+      
+      customVenues.forEach(cv => {
+        if (cv.isDeleted) {
+          delete venuesMap[cv.id];
+        } else {
+          venuesMap[cv.id] = cv;
+        }
+      });
+      
+      state.venues = Object.values(venuesMap);
+    } catch(e) {
+      console.error('Failed to parse custom venues:', e);
+    }
+  }
   state.clusterGroup = L.markerClusterGroup({
     maxClusterRadius: 60,
     disableClusteringAtZoom: 15,
@@ -413,6 +435,12 @@ document.getElementById('btn-click-point').addEventListener('click', () => {
 });
 
 map.on('click', e => {
+  if (state.isAddingVenue) {
+    document.getElementById('form-lat').value = e.latlng.lat.toFixed(6);
+    document.getElementById('form-lng').value = e.latlng.lng.toFixed(6);
+    showToast(lang === 'th' ? '📌 ป้อนพิกัดลงในฟอร์มเรียบร้อย!' : '📌 Coordinates updated in form!');
+    return;
+  }
   if (!state.clickMode) return;
   const pt = { lat: e.latlng.lat, lng: e.latlng.lng };
   placeLocationMarker(pt);
@@ -581,6 +609,14 @@ function showDetail(venue) {
     const url = `https://www.google.com/maps/search/?api=1&query=${venue.lat},${venue.lng}`;
     window.open(url, '_blank');
   };
+
+  // Toggle Admin actions visibility
+  const adminActions = document.getElementById('admin-venue-actions');
+  if (state.isAdmin) {
+    adminActions.classList.remove('hidden');
+  } else {
+    adminActions.classList.add('hidden');
+  }
 }
 
 function checkOpenNow(venue) {
@@ -1033,6 +1069,262 @@ function showToast(msg) {
     setTimeout(() => el.classList.add('hidden'), 350);
   }, 2500);
 }
+
+// ── Admin Features ───────────────────────────────────────────
+state.isAdmin = false;
+state.isAddingVenue = false;
+
+// Check stored session login
+if (sessionStorage.getItem('dailyspot_is_admin') === 'true') {
+  setTimeout(() => setAdminMode(true), 200);
+}
+
+// UI Triggers
+document.getElementById('btn-admin-login-trigger').addEventListener('click', () => {
+  if (state.isAdmin) {
+    const panel = document.getElementById('admin-control-panel');
+    panel.classList.toggle('hidden');
+  } else {
+    document.getElementById('admin-login-modal').classList.remove('hidden');
+    document.getElementById('login-password').value = '';
+    document.getElementById('login-error-msg').classList.add('hidden');
+  }
+});
+
+document.getElementById('btn-close-login-modal').addEventListener('click', () => {
+  document.getElementById('admin-login-modal').classList.add('hidden');
+});
+
+document.getElementById('btn-admin-login-submit').addEventListener('click', () => {
+  const user = document.getElementById('login-username').value;
+  const pass = document.getElementById('login-password').value;
+  if (user === 'admin' && pass === 'admin') {
+    setAdminMode(true);
+    document.getElementById('admin-login-modal').classList.add('hidden');
+    showToast(lang === 'th' ? '🔓 เข้าสู่ระบบ Admin สำเร็จ!' : '🔓 Admin login successful!');
+  } else {
+    document.getElementById('login-error-msg').classList.remove('hidden');
+  }
+});
+
+document.getElementById('btn-admin-logout').addEventListener('click', () => {
+  setAdminMode(false);
+  showToast(lang === 'th' ? '🔒 ออกจากระบบ Admin เรียบร้อย' : '🔒 Logged out of Admin mode');
+});
+
+function setAdminMode(val) {
+  state.isAdmin = val;
+  if (val) {
+    sessionStorage.setItem('dailyspot_is_admin', 'true');
+    document.getElementById('admin-control-panel').classList.remove('hidden');
+    document.getElementById('btn-admin-login-trigger').textContent = '🛠️';
+    if (state.selectedVenue) {
+      document.getElementById('admin-venue-actions').classList.remove('hidden');
+    }
+  } else {
+    sessionStorage.removeItem('dailyspot_is_admin');
+    document.getElementById('admin-control-panel').classList.add('hidden');
+    document.getElementById('admin-form-panel').classList.add('hidden');
+    document.getElementById('admin-venue-actions').classList.add('hidden');
+    document.getElementById('btn-admin-login-trigger').textContent = '🔑';
+    state.isAddingVenue = false;
+  }
+}
+
+// Add/Edit Spot Trigger
+document.getElementById('btn-admin-add-venue').addEventListener('click', () => {
+  openAdminForm();
+});
+
+document.getElementById('btn-admin-cancel-form').addEventListener('click', () => {
+  document.getElementById('admin-form-panel').classList.add('hidden');
+  state.isAddingVenue = false;
+});
+
+function openAdminForm(venue = null) {
+  state.isAddingVenue = true;
+  document.getElementById('detail-panel').classList.add('hidden');
+  document.getElementById('admin-form-panel').classList.remove('hidden');
+  
+  const form = document.getElementById('admin-venue-form');
+  form.reset();
+  
+  if (venue) {
+    document.getElementById('admin-form-title').textContent = lang === 'th' ? '📝 แก้ไขสถานที่' : '📝 Edit Spot';
+    document.getElementById('form-venue-id').value = venue.id;
+    document.getElementById('form-name-th').value = venue.name_th;
+    document.getElementById('form-name-en').value = venue.name_en;
+    
+    const types = venue.types || [];
+    document.querySelectorAll('input[name="form-types"]').forEach(cb => {
+      cb.checked = types.includes(cb.value);
+    });
+    
+    document.getElementById('form-address-th').value = venue.address_th || '';
+    document.getElementById('form-address-en').value = venue.address_en || '';
+    document.getElementById('form-district-th').value = venue.district_th || '';
+    document.getElementById('form-district-en').value = venue.district_en || '';
+    document.getElementById('form-province').value = venue.province || 'กรุงเทพมหานคร';
+    document.getElementById('form-lat').value = venue.lat;
+    document.getElementById('form-lng').value = venue.lng;
+    document.getElementById('form-hours-th').value = venue.hours_th || '';
+    document.getElementById('form-hours-en').value = venue.hours_en || '';
+    document.getElementById('form-phone').value = venue.phone || '';
+  } else {
+    document.getElementById('admin-form-title').textContent = lang === 'th' ? '➕ เพิ่มสถานที่ใหม่' : '➕ Add Spot';
+    document.getElementById('form-venue-id').value = '';
+    document.getElementById('form-province').value = 'กรุงเทพมหานคร';
+    document.querySelectorAll('input[name="form-types"]').forEach(cb => {
+      cb.checked = false;
+    });
+  }
+}
+
+document.getElementById('btn-admin-edit-venue').addEventListener('click', () => {
+  if (state.selectedVenue) {
+    openAdminForm(state.selectedVenue);
+  }
+});
+
+document.getElementById('btn-admin-delete-venue').addEventListener('click', () => {
+  if (state.selectedVenue && confirm(lang === 'th' ? `คุณแน่ใจหรือไม่ว่าต้องการลบหมุด "${state.selectedVenue.name_th}"?` : `Are you sure you want to delete "${state.selectedVenue.name_en}"?`)) {
+    deleteVenue(state.selectedVenue.id);
+  }
+});
+
+document.getElementById('btn-admin-submit-form').addEventListener('click', () => {
+  const form = document.getElementById('admin-venue-form');
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+  
+  const selectedTypes = [];
+  document.querySelectorAll('input[name="form-types"]:checked').forEach(cb => {
+    selectedTypes.push(cb.value);
+  });
+  
+  if (selectedTypes.length === 0) {
+    alert(lang === 'th' ? 'กรุณาเลือกประเภทสถานที่อย่างน้อย 1 ประเภท' : 'Please select at least 1 venue type');
+    return;
+  }
+  
+  const id = document.getElementById('form-venue-id').value || `custom_${Date.now()}`;
+  
+  let schedule = null;
+  const hoursTh = document.getElementById('form-hours-th').value;
+  if (hoursTh) {
+    const m = hoursTh.match(/(\d{2}[:\.]\d{2})\s*[-–]\s*(\d{2}[:\.]\d{2})/);
+    const o = m ? m[1].replace('.', ':') : "08:00";
+    const c = m ? m[2].replace('.', ':') : "18:00";
+    schedule = {};
+    for (let i = 0; i < 7; i++) {
+      schedule[i] = { o, c };
+    }
+  }
+  
+  const venue = {
+    id,
+    name_th: document.getElementById('form-name-th').value,
+    name_en: document.getElementById('form-name-en').value,
+    types: selectedTypes,
+    address_th: document.getElementById('form-address-th').value,
+    address_en: document.getElementById('form-address-en').value,
+    district_th: document.getElementById('form-district-th').value,
+    district_en: document.getElementById('form-district-en').value,
+    province: document.getElementById('form-province').value,
+    lat: parseFloat(document.getElementById('form-lat').value),
+    lng: parseFloat(document.getElementById('form-lng').value),
+    hours_th: hoursTh,
+    hours_en: document.getElementById('form-hours-en').value,
+    phone: document.getElementById('form-phone').value,
+  };
+  if (schedule) venue.schedule = schedule;
+  
+  saveCustomVenue(venue);
+});
+
+function saveCustomVenue(venue) {
+  let localData = localStorage.getItem('dailyspot_custom_venues');
+  let customVenues = localData ? JSON.parse(localData) : [];
+  
+  const idx = customVenues.findIndex(v => v.id === venue.id);
+  if (idx !== -1) {
+    customVenues[idx] = venue;
+  } else {
+    customVenues.push(venue);
+  }
+  
+  localStorage.setItem('dailyspot_custom_venues', JSON.stringify(customVenues));
+  
+  loadVenues().then(() => {
+    renderMarkers();
+    updateFilterCounts();
+    buildHeatLayer();
+    document.getElementById('admin-form-panel').classList.add('hidden');
+    state.isAddingVenue = false;
+    
+    const updatedVenue = state.venues.find(v => v.id === venue.id);
+    if (updatedVenue) selectVenue(updatedVenue);
+    
+    showToast(lang === 'th' ? '💾 บันทึกสถานที่สำเร็จ!' : '💾 Spot saved successfully!');
+  });
+}
+
+function deleteVenue(id) {
+  let localData = localStorage.getItem('dailyspot_custom_venues');
+  let customVenues = localData ? JSON.parse(localData) : [];
+  
+  const isOriginal = !id.startsWith('custom_');
+  
+  const idx = customVenues.findIndex(v => v.id === id);
+  if (idx !== -1) {
+    if (isOriginal) {
+      customVenues[idx] = { id, isDeleted: true };
+    } else {
+      customVenues.splice(idx, 1);
+    }
+  } else {
+    if (isOriginal) {
+      customVenues.push({ id, isDeleted: true });
+    }
+  }
+  
+  localStorage.setItem('dailyspot_custom_venues', JSON.stringify(customVenues));
+  
+  document.getElementById('detail-panel').classList.add('hidden');
+  state.selectedVenue = null;
+  state.activeMarker = null;
+  state.activeMarkerVenue = null;
+  
+  loadVenues().then(() => {
+    renderMarkers();
+    updateFilterCounts();
+    buildHeatLayer();
+    showToast(lang === 'th' ? '🗑 ลบสถานที่เรียบร้อย!' : '🗑 Spot deleted successfully!');
+  });
+}
+
+document.getElementById('btn-admin-export').addEventListener('click', () => {
+  const exportData = {
+    meta: state.meta,
+    venues: state.venues
+  };
+  
+  exportData.meta.total_venues = exportData.venues.length;
+  
+  const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'venues.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  
+  showToast(lang === 'th' ? '📥 ดาวน์โหลดไฟล์ venues.json แล้ว' : '📥 venues.json downloaded!');
+});
 
 // ── Boot ──────────────────────────────────────────────────────
 loadVenues().then(() => {

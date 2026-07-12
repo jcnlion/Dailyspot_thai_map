@@ -898,3 +898,28 @@ svg { display: block; width: 16px; height: 16px; fill: none; stroke: currentColo
     min-width: var(--sidebar-w);
   }
 }
+
+/* ── Admin Styles ────────────────────────────────────── */
+.modal {
+  display: flex;
+  transition: opacity 0.25s ease;
+}
+.modal.hidden {
+  display: none !important;
+}
+.modal-content input:focus,
+#admin-venue-form input:focus {
+  outline: none;
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 0 3px rgba(222, 114, 53, 0.15);
+}
+.modal-content input,
+#admin-venue-form input {
+  font-family: inherit;
+  transition: all var(--trans-fast);
+}
+.modal-content input::placeholder,
+#admin-venue-form input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
