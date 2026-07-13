@@ -47607,6 +47607,462 @@
       "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
       "province": "กรุงเทพมหานคร",
       "source": "auto-import"
+    },
+    {
+      "id": "lib_198",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้มีนบุรี",
+      "name_en": "Min Buri Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "88 ถนนรามอินทรา แขวงมีนบุรี เขตมีนบุรี กรุงเทพมหานคร 10510",
+      "address_en": "88 Ram Inthra Rd, Min Buri, Min Buri, Bangkok 10510",
+      "district_th": "มีนบุรี",
+      "district_en": "Not specified",
+      "phone": "02-540-2575",
+      "lat": 13.81284,
+      "lng": 100.71506,
+      "hours_th": "วันอังคาร-เสาร์ 08.30-19.30 น. วันอาทิตย์ 09.00-17.00 น. ปิดวันจันทร์และวันหยุดนักขัตฤกษ์",
+      "hours_en": "Tue-Sat 08:30-19:30, Sun 09:00-17:00, Closed Mon & Public Holidays",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_199",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้ซอยพระนาง",
+      "name_en": "Soi Phra Nang Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "495/12 ซอยราชวิถี 4 ถนนราชวิถี แขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400",
+      "address_en": "495/12 Ratchawithi 4 Alley, Ratchawithi Rd, Thanon Phaya Thai, Ratchathewi, Bangkok 10400",
+      "district_th": "ราชเทวี",
+      "district_en": "Not specified",
+      "phone": "02-246-3517",
+      "lat": 13.7628,
+      "lng": 100.5367,
+      "hours_th": "วันอังคาร-เสาร์ 08.30-20.00 น. วันอาทิตย์และวันหยุดนักขัตฤกษ์ 09.00-17.00 น. ปิดวันจันทร์",
+      "hours_en": "Tue-Sat 08:30-20:00, Sun & Public Holidays 09:00-17:00, Closed Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_200",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้สะพานสูง",
+      "name_en": "Saphan Sung Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "ซอยรามคำแหง 118 ถนนรามคำแหง แขวงสะพานสูง เขตสะพานสูง กรุงเทพมหานคร 10240",
+      "address_en": "Ramkhamhaeng 118 Alley, Ramkhamhaeng Rd, Saphan Sung, Saphan Sung, Bangkok 10240",
+      "district_th": "สะพานสูง",
+      "district_en": "Not specified",
+      "phone": "02-372-2438",
+      "lat": 13.7749,
+      "lng": 100.6823,
+      "hours_th": "วันอังคาร-เสาร์ 08.30-20.00 น. วันอาทิตย์ 09.00-17.00 น. ปิดวันจันทร์",
+      "hours_en": "Tue-Sat 08:30-20:00, Sun 09:00-17:00, Closed Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_201",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้บ้านจิรายุ-พูนทรัพย์",
+      "name_en": "Ban Chirayu-Phunsap Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "1166 ซอยสุขุมวิท 101/1 แขวงบางจาก เขตพระโขนง กรุงเทพมหานคร 10260",
+      "address_en": "1166 Sukhumvit 101/1 Alley, Bang Chak, Phra Khanong, Bangkok 10260",
+      "district_th": "พระโขนง",
+      "district_en": "Not specified",
+      "phone": "02-398-2551",
+      "lat": 13.687,
+      "lng": 100.627,
+      "hours_th": "ไม่ระบุ",
+      "hours_en": "Not specified",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_202",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้บางบอน",
+      "name_en": "Bang Bon Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "ไม่ระบุ",
+      "address_en": "Not specified",
+      "district_th": "ไม่ระบุ",
+      "district_en": "Not specified",
+      "phone": "ไม่ระบุ",
+      "lat": 13.659,
+      "lng": 100.399,
+      "hours_th": "ไม่ระบุ",
+      "hours_en": "Not specified",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_203",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้ดุสิต",
+      "name_en": "Dusit Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "ถนนทหาร แขวงถนนนครไชยศรี เขตดุสิต กรุงเทพมหานคร 10300",
+      "address_en": "Thahan Rd, Thanon Nakhon Chai Si, Dusit, Bangkok 10300",
+      "district_th": "ดุสิต",
+      "district_en": "Not specified",
+      "phone": "ไม่ระบุ",
+      "lat": 13.796,
+      "lng": 100.521,
+      "hours_th": "วันอังคาร-อาทิตย์ 08.30-19.00 น. ปิดวันจันทร์",
+      "hours_en": "Tue-Sun 08:30-19:00, Closed Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_204",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้บางชัน",
+      "name_en": "Bang Chan Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "ไม่ระบุ",
+      "address_en": "Not specified",
+      "district_th": "ไม่ระบุ",
+      "district_en": "Not specified",
+      "phone": "ไม่ระบุ",
+      "lat": 13.82,
+      "lng": 100.7,
+      "hours_th": "ไม่ระบุ",
+      "hours_en": "Not specified",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_205",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้วัดรัชฎาธิษฐาน",
+      "name_en": "Wat Ratchadathitthan Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "วัดรัชฎาธิษฐาน ถนนแก้วเงินทอง แขวงคลองชักพระ เขตตลิ่งชัน กรุงเทพมหานคร 10170",
+      "address_en": "Wat Ratchadathitthan, Kaeo Ngoen Thong Rd, Khlong Chak Phra, Taling Chan, Bangkok 10170",
+      "district_th": "ตลิ่งชัน",
+      "district_en": "Not specified",
+      "phone": "02-416-0816",
+      "lat": 13.758745,
+      "lng": 100.454011,
+      "hours_th": "วันอังคาร-เสาร์ 09.00-17.00 น. ปิดวันอาทิตย์-จันทร์",
+      "hours_en": "Tue-Sat 09:00-17:00, Closed Sun-Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_206",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้รมณียนาถ",
+      "name_en": "Rommaninat Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "ถนนมหาไชย แขวงสำราญราษฎร์ เขตพระนคร กรุงเทพมหานคร 10200",
+      "address_en": "Maha Chai Rd, Samran Rat, Phra Nakhon, Bangkok 10200",
+      "district_th": "พระนคร",
+      "district_en": "Not specified",
+      "phone": "02-221-5181",
+      "lat": 13.748796,
+      "lng": 100.502994,
+      "hours_th": "เปิดทุกวัน 05.00-21.00 น.",
+      "hours_en": "Daily 05:00-21:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_207",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้ลาดกระบัง",
+      "name_en": "Lat Krabang Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "สวนพระนคร ซอยลาดกระบัง 50/1 แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพมหานคร 10520",
+      "address_en": "Suan Phra Nakhon, Lat Krabang 50/1 Alley, Lat Krabang, Lat Krabang, Bangkok 10520",
+      "district_th": "ลาดกระบัง",
+      "district_en": "Not specified",
+      "phone": "02-327-2658",
+      "lat": 13.725,
+      "lng": 100.776,
+      "hours_th": "วันอังคาร-เสาร์ 08.30-20.00 น. วันอาทิตย์ 09.00-17.00 น. ปิดวันจันทร์",
+      "hours_en": "Tue-Sat 08:30-20:00, Sun 09:00-17:00, Closed Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_208",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้ทุ่งครุ",
+      "name_en": "Thung Khru Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "377/1 ถนนพุทธบูชา แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140",
+      "address_en": "377/1 Phuttha Bucha Rd, Bang Mot, Thung Khru, Bangkok 10140",
+      "district_th": "ทุ่งครุ",
+      "district_en": "Not specified",
+      "phone": "02-426-5257",
+      "lat": 13.65,
+      "lng": 100.485,
+      "hours_th": "วันอังคาร-อาทิตย์ 10.00-15.00 น. ปิดวันจันทร์",
+      "hours_en": "Tue-Sun 10:00-15:00, Closed Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_209",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้บางกะปิ",
+      "name_en": "Bang Kapi Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "ซอยนวมินทร์ 12 ถนนนวมินทร์ แขวงคลองจั่น เขตบางกะปิ กรุงเทพมหานคร 10240",
+      "address_en": "Nawamin 12 Alley, Nawamin Rd, Khlong Chan, Bang Kapi, Bangkok 10240",
+      "district_th": "บางกะปิ",
+      "district_en": "Not specified",
+      "phone": "02-375-3963",
+      "lat": 13.774,
+      "lng": 100.644,
+      "hours_th": "วันอังคาร-เสาร์ 08.30-20.00 น. วันอาทิตย์ 09.00-17.00 น. ปิดวันจันทร์",
+      "hours_en": "Tue-Sat 08:30-20:00, Sun 09:00-17:00, Closed Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_210",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้หนองจอก",
+      "name_en": "Nong Chok Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "ภายในโรงเรียนภักดีนรเศรษฐ ถนนเลียบวารี แขวงกระทุ่มราย เขตหนองจอก กรุงเทพมหานคร 10530",
+      "address_en": "Phakdinoraset School, Liap Wari Rd, Krathum Rai, Nong Chok, Bangkok 10530",
+      "district_th": "หนองจอก",
+      "district_en": "Not specified",
+      "phone": "02-988-4480",
+      "lat": 13.8552,
+      "lng": 100.8627,
+      "hours_th": "วันอังคาร-อาทิตย์ 10.00-15.00 น. ปิดวันจันทร์",
+      "hours_en": "Tue-Sun 10:00-15:00, Closed Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_211",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้ห้วยขวาง",
+      "name_en": "Huai Khwang Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "568 ถนนประชาราษฎร์บำเพ็ญ แขวงสามเสนนอก เขตห้วยขวาง กรุงเทพมหานคร 10310",
+      "address_en": "568 Pracha Rat Bamphen Rd, Sam Sen Nok, Huai Khwang, Bangkok 10310",
+      "district_th": "ห้วยขวาง",
+      "district_en": "Not specified",
+      "phone": "02-277-2161",
+      "lat": 13.778,
+      "lng": 100.582,
+      "hours_th": "วันอังคาร-เสาร์ 08.30-19.30 น. วันอาทิตย์ 09.00-17.00 น. ปิดวันจันทร์",
+      "hours_en": "Tue-Sat 08:30-19:30, Sun 09:00-17:00, Closed Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_212",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้คลองสามวา",
+      "name_en": "Khlong Sam Wa Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "15 ซอยเลียบคลองสอง 19 แขวงสามวาตะวันตก เขตคลองสามวา กรุงเทพมหานคร 10510",
+      "address_en": "15 Liap Khlong Song 19 Alley, Sam Wa Tawan Tok, Khlong Sam Wa, Bangkok 10510",
+      "district_th": "คลองสามวา",
+      "district_en": "Not specified",
+      "phone": "02-914-0732",
+      "lat": 13.864,
+      "lng": 100.706,
+      "hours_th": "วันอังคาร-เสาร์ 08.30-19.30 น. วันอาทิตย์ 09.00-17.00 น. ปิดวันจันทร์",
+      "hours_en": "Tue-Sat 08:30-19:30, Sun 09:00-17:00, Closed Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_213",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้วัดลาดปลาเค้า",
+      "name_en": "Wat Lat Pla Khao Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "วัดลาดปลาเค้า แขวงจรเข้บัว เขตลาดพร้าว กรุงเทพมหานคร 10230",
+      "address_en": "Wat Lat Pla Khao, Chorakhe Bua, Lat Phrao, Bangkok 10230",
+      "district_th": "ลาดพร้าว",
+      "district_en": "Not specified",
+      "phone": "ไม่ระบุ",
+      "lat": 13.844,
+      "lng": 100.605,
+      "hours_th": "ไม่ระบุ",
+      "hours_en": "Not specified",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_214",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้ประเวศ",
+      "name_en": "Prawet Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "ซอยสุภาพงษ์ ถนนศรีนครินทร์ แขวงหนองบอน เขตประเวศ กรุงเทพมหานคร 10260",
+      "address_en": "Soi Suphaphong, Srinagarindra Rd, Nong Bon, Prawet, Bangkok 10260",
+      "district_th": "ประเวศ",
+      "district_en": "Not specified",
+      "phone": "02-330-8479",
+      "lat": 13.6917,
+      "lng": 100.64614,
+      "hours_th": "วันอังคาร-เสาร์ 08.30-19.30 น. วันอาทิตย์ 09.00-17.00 น. ปิดวันจันทร์",
+      "hours_en": "Tue-Sat 08:30-19:30, Sun 09:00-17:00, Closed Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_215",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้ภาษีเจริญ",
+      "name_en": "Phasi Charoen Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "2 ถนนเพชรเกษม แขวงบางหว้า เขตภาษีเจริญ กรุงเทพมหานคร 10160",
+      "address_en": "2 Phet Kasem Rd, Bang Wa, Phasi Charoen, Bangkok 10160",
+      "district_th": "ภาษีเจริญ",
+      "district_en": "Not specified",
+      "phone": "ไม่ระบุ",
+      "lat": 13.71385,
+      "lng": 100.43905,
+      "hours_th": "วันอังคาร-อาทิตย์ 10.00-15.00 น. ปิดวันจันทร์",
+      "hours_en": "Tue-Sun 10:00-15:00, Closed Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_216",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้บางเขน",
+      "name_en": "Bang Khen Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "สำนักงานเขตบางเขน ถนนพหลโยธิน แขวงอนุสาวรีย์ เขตบางเขน กรุงเทพมหานคร 10220",
+      "address_en": "Bang Khen District Office, Phahon Yothin Rd, Anusawari, Bang Khen, Bangkok 10220",
+      "district_th": "บางเขน",
+      "district_en": "Not specified",
+      "phone": "02-521-3375",
+      "lat": 13.8767,
+      "lng": 100.5955,
+      "hours_th": "วันอังคาร-เสาร์ 08.30-19.30 น. วันอาทิตย์ 09.00-17.00 น. ปิดวันจันทร์",
+      "hours_en": "Tue-Sat 08:30-19:30, Sun 09:00-17:00, Closed Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_217",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้สวนลุมพินี",
+      "name_en": "Lumphini Park Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "สวนลุมพินี ถนนพระรามที่ 4 แขวงลุมพินี เขตปทุมวัน กรุงเทพมหานคร 10330",
+      "address_en": "Lumphini Park, Rama IV Rd, Lumphini, Pathum Wan, Bangkok 10330",
+      "district_th": "ปทุมวัน",
+      "district_en": "Not specified",
+      "phone": "02-163-4675",
+      "lat": 13.73136,
+      "lng": 100.54443,
+      "hours_th": "วันอังคาร-อาทิตย์ 08.00-19.00 น. ปิดวันจันทร์",
+      "hours_en": "Tue-Sun 08:00-19:00, Closed Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_218",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้วัดอนงคาราม",
+      "name_en": "Wat Anongkharam Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "วัดอนงคาราม ถนนสมเด็จเจ้าพระยา แขวงสมเด็จเจ้าพระยา เขตคลองสาน กรุงเทพมหานคร 10600",
+      "address_en": "Wat Anongkharam, Somdet Chao Phraya Rd, Somdet Chao Phraya, Khlong San, Bangkok 10600",
+      "district_th": "คลองสาน",
+      "district_en": "Not specified",
+      "phone": "ไม่ระบุ",
+      "lat": 13.7342,
+      "lng": 100.498,
+      "hours_th": "วันอังคาร-อาทิตย์ 09.00-17.00 น. ปิดวันจันทร์",
+      "hours_en": "Tue-Sun 09:00-17:00, Closed Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_219",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้จอมทอง",
+      "name_en": "Chom Thong Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "ไม่ระบุ",
+      "address_en": "Not specified",
+      "district_th": "ไม่ระบุ",
+      "district_en": "Not specified",
+      "phone": "ไม่ระบุ",
+      "lat": 13.693,
+      "lng": 100.463,
+      "hours_th": "ไม่ระบุ",
+      "hours_en": "Not specified",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_220",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้คลองเตย",
+      "name_en": "Khlong Toei Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "แขวงคลองเตย เขตคลองเตย กรุงเทพมหานคร 10110",
+      "address_en": "Khlong Toei, Khlong Toei, Bangkok 10110",
+      "district_th": "คลองเตย",
+      "district_en": "Not specified",
+      "phone": "ไม่ระบุ",
+      "lat": 13.717,
+      "lng": 100.573,
+      "hours_th": "ไม่ระบุ",
+      "hours_en": "Not specified",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "lib_221",
+      "name_th": "ห้องสมุดเพื่อการเรียนรู้บางขุนเทียน",
+      "name_en": "Bang Khun Thian Discovery Learning Library",
+      "types": [
+        "library"
+      ],
+      "address_th": "สวนสมเด็จย่า ถนนพระราม 2 แขวงแสมดำ เขตบางขุนเทียน กรุงเทพมหานคร 10150",
+      "address_en": "Suan Somdet Ya, Rama II Rd, Samae Dam, Bang Khun Thian, Bangkok 10150",
+      "district_th": "บางขุนเทียน",
+      "district_en": "Not specified",
+      "phone": "02-416-3950",
+      "lat": 13.6548,
+      "lng": 100.4354,
+      "hours_th": "วันอังคาร-เสาร์ 08.30-20.00 น. วันอาทิตย์ 09.00-17.00 น. ปิดวันจันทร์",
+      "hours_en": "Tue-Sat 08:30-20:00, Sun 09:00-17:00, Closed Mon",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
     }
   ]
 }
