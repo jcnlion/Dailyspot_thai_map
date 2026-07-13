@@ -47094,6 +47094,519 @@
           "c": "21:00"
         }
       }
+    },
+    {
+      "id": "sp_016",
+      "name_th": "ศูนย์กีฬาเสนาเวศน์",
+      "name_en": "Sena Niwet Sports Center",
+      "types": [
+        "sports"
+      ],
+      "address_th": "186 ถนนลาดปลาเค้า แขวงจรเข้บัว เขตลาดพร้าว กรุงเทพมหานคร 10230",
+      "address_en": "186 Lat Pla Khao Rd, Chorakhe Bua, Lat Phrao, Bangkok 10230",
+      "district_th": "ลาดพร้าว",
+      "district_en": "Not specified",
+      "phone": "02-940-3555",
+      "lat": 13.8398,
+      "lng": 100.6035,
+      "hours_th": "ไม่ระบุ",
+      "hours_en": "Not specified",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "sp_017",
+      "name_th": "ศูนย์กีฬาประเวศน์",
+      "name_en": "Prawet Sports Center",
+      "types": [
+        "sports"
+      ],
+      "address_th": "ไม่ระบุ",
+      "address_en": "Not specified",
+      "district_th": "ไม่ระบุ",
+      "district_en": "Not specified",
+      "phone": "ไม่ระบุ",
+      "lat": 13.7161,
+      "lng": 100.6967,
+      "hours_th": "ไม่ระบุ",
+      "hours_en": "Not specified",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "sp_018",
+      "name_th": "ศูนย์กีฬามิตรไมตรี",
+      "name_en": "Mitmaitri Sports Center",
+      "types": [
+        "sports"
+      ],
+      "address_th": "อาคารกีฬาเวสน์ 3 ถนนมิตรไมตรี แขวงดินแดง เขตดินแดง กรุงเทพมหานคร 10400",
+      "address_en": "Keelawes 3 Building, Mitmaitri Rd, Din Daeng, Bangkok 10400",
+      "district_th": "ดินแดง",
+      "district_en": "Not specified",
+      "phone": "02-245-0912",
+      "lat": 13.7715,
+      "lng": 100.5539,
+      "hours_th": "ไม่ระบุ",
+      "hours_en": "Not specified",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "sp_019",
+      "name_th": "ศูนย์กีฬาเบญจกิตติ",
+      "name_en": "Benjakitti Sports Center",
+      "types": [
+        "sports"
+      ],
+      "address_th": "สวนเบญจกิติ ถนนรัชดาภิเษก แขวงคลองเตย เขตคลองเตย กรุงเทพมหานคร 10110",
+      "address_en": "Benjakitti Park, Ratchadaphisek Rd, Khlong Toei, Bangkok 10110",
+      "district_th": "คลองเตย",
+      "district_en": "Not specified",
+      "phone": "ไม่ระบุ",
+      "lat": 13.7294,
+      "lng": 100.5586,
+      "hours_th": "ทุกวัน 04.30 - 21.00 น.",
+      "hours_en": "Everyday 04:30 - 21:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "sp_020",
+      "name_th": "ศูนย์กีฬาเฉลิมพระเกียรติ (ทุ่งครุ)",
+      "name_en": "Chaloem Phrakiat Sports Center (Thung Khru)",
+      "types": [
+        "sports"
+      ],
+      "address_th": "60/1 ถนนพุทธบูชา แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140",
+      "address_en": "60/1 Phutthabucha Rd, Bang Mot, Thung Khru, Bangkok 10140",
+      "district_th": "ทุ่งครุ",
+      "district_en": "Not specified",
+      "phone": "02-426-2614",
+      "lat": 13.6558,
+      "lng": 100.4855,
+      "hours_th": "ทุกวัน 05.00 - 21.00 น.",
+      "hours_en": "Everyday 05:00 - 21:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_033",
+      "name_th": "ศูนย์เยาวชนลุมพินี",
+      "name_en": "Lumphini Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "192 ถนนพระรามที่ 4 แขวงลุมพินี เขตปทุมวัน กรุงเทพมหานคร 10330",
+      "address_en": "192 Rama IV Rd, Lumphini, Pathum Wan, Bangkok 10330",
+      "district_th": "ปทุมวัน",
+      "district_en": "Not specified",
+      "phone": "02-252-8035",
+      "lat": 13.7303,
+      "lng": 100.5413,
+      "hours_th": "จันทร์-ศุกร์ 07.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 07:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_034",
+      "name_th": "ศูนย์เยาวชนคลองเตย",
+      "name_en": "Khlong Toei Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "ถนนอาจณรงค์ แขวงคลองเตย เขตคลองเตย กรุงเทพมหานคร 10110",
+      "address_en": "At Narong Rd, Khlong Toei, Bangkok 10110",
+      "district_th": "คลองเตย",
+      "district_en": "Not specified",
+      "phone": "02-350-2482",
+      "lat": 13.7088,
+      "lng": 100.5755,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_035",
+      "name_th": "วัฒนธรรมกีฬาบางแค",
+      "name_en": "Bang Khae Sports and Cultural Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "81 ซอยกาญจนาภิเษก 003 แขวงหลักสอง เขตบางแค กรุงเทพมหานคร 10160",
+      "address_en": "81 Soi Kanchanaphisek 003, Lak Song, Bang Khae, Bangkok 10160",
+      "district_th": "บางแค",
+      "district_en": "Not specified",
+      "phone": "02-445-6123",
+      "lat": 13.7085,
+      "lng": 100.4048,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_036",
+      "name_th": "ศูนย์เยาวชนบางขุนเทียน",
+      "name_en": "Bang Khun Thian Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "88/2527 ถนนพระราม 2 ซอย 69 แขวงแสมดำ เขตบางขุนเทียน กรุงเทพมหานคร 10150",
+      "address_en": "88/2527 Rama II Soi 69, Samae Dam, Bang Khun Thian, Bangkok 10150",
+      "district_th": "บางขุนเทียน",
+      "district_en": "Not specified",
+      "phone": "02-416-5739",
+      "lat": 13.6558,
+      "lng": 100.3855,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_037",
+      "name_th": "ศูนย์เยาวชนทวีวัฒนา",
+      "name_en": "Thawi Watthana Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "108 หมู่ที่ 1 ซอยทวีวัฒนา 9 ถนนเลียบคลองทวีวัฒนา แขวงทวีวัฒนา เขตทวีวัฒนา กรุงเทพมหานคร 10170",
+      "address_en": "108 Moo 1, Soi Thawi Watthana 9, Thawi Watthana, Bangkok 10170",
+      "district_th": "ทวีวัฒนา",
+      "district_en": "Not specified",
+      "phone": "02-487-3201",
+      "lat": 13.7573,
+      "lng": 100.3347,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_038",
+      "name_th": "ศูนย์เยาวชนสะพานสูง",
+      "name_en": "Saphan Sung Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "29 ซอยรามคำแหง 118 แขวงสะพานสูง เขตสะพานสูง กรุงเทพมหานคร 10240",
+      "address_en": "29 Soi Ramkhamhaeng 118, Saphan Sung, Bangkok 10240",
+      "district_th": "สะพานสูง",
+      "district_en": "Not specified",
+      "phone": "02-372-0577",
+      "lat": 13.7745,
+      "lng": 100.6865,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_039",
+      "name_th": "ศูนย์เยาวชนเทเวศร์",
+      "name_en": "Thewet Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "266 ถนนกรุงเกษม แขวงบางขุนพรหม เขตพระนคร กรุงเทพมหานคร 10200",
+      "address_en": "266 Krung Kasem Rd, Bang Khun Phrom, Phra Nakhon, Bangkok 10200",
+      "district_th": "พระนคร",
+      "district_en": "Not specified",
+      "phone": "02-281-1070",
+      "lat": 13.763,
+      "lng": 100.505,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_040",
+      "name_th": "ศูนย์เยาวชนดอนเมือง",
+      "name_en": "Don Mueang Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "501 ถนนเดชะตุงคะ แขวงสีกัน เขตดอนเมือง กรุงเทพมหานคร 10210",
+      "address_en": "501 Decha Tungka Rd, Si Kan, Don Mueang, Bangkok 10210",
+      "district_th": "ดอนเมือง",
+      "district_en": "Not specified",
+      "phone": "02-566-3292",
+      "lat": 13.9317,
+      "lng": 100.5843,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_041",
+      "name_th": "ศูนย์เยาวชนหลักสี่",
+      "name_en": "Lak Si Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "ซอยประชาชื่น 12 แยก 1-2 แขวงทุ่งสองห้อง เขตหลักสี่ กรุงเทพมหานคร 10210",
+      "address_en": "Soi Pracha Chuen 12 Yaek 1-2, Thung Song Hong, Lak Si, Bangkok 10210",
+      "district_th": "หลักสี่",
+      "district_en": "Not specified",
+      "phone": "02-591-3319",
+      "lat": 13.8643,
+      "lng": 100.5517,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_042",
+      "name_th": "ศูนย์เยาวชนจตุจักร",
+      "name_en": "Chatuchak Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "111/1 ถนนงามวงศ์วาน แขวงลาดยาว เขตจตุจักร กรุงเทพมหานคร 10900",
+      "address_en": "111/1 Ngam Wong Wan Rd, Lat Yao, Chatuchak, Bangkok 10900",
+      "district_th": "จตุจักร",
+      "district_en": "Not specified",
+      "phone": "02-591-7961",
+      "lat": 13.8443,
+      "lng": 100.5658,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_043",
+      "name_th": "ศูนย์เยาวชนบางเขน",
+      "name_en": "Bang Khen Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "24/88 ถนนพหลโยธิน แขวงอนุสาวรีย์ เขตบางเขน กรุงเทพมหานคร 10220",
+      "address_en": "24/88 Phahonyothin Rd, Anusawari, Bang Khen, Bangkok 10220",
+      "district_th": "บางเขน",
+      "district_en": "Not specified",
+      "phone": "02-521-0271",
+      "lat": 13.8748,
+      "lng": 100.5977,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_044",
+      "name_th": "ศูนย์เยาวชนลาดกระบัง",
+      "name_en": "Lat Krabang Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "34/1 ซอยลาดกระบัง 50 ถนนลาดกระบัง แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพมหานคร 10520",
+      "address_en": "34/1 Soi Lat Krabang 50, Lat Krabang, Bangkok 10520",
+      "district_th": "ลาดกระบัง",
+      "district_en": "Not specified",
+      "phone": "02-326-6828",
+      "lat": 13.725,
+      "lng": 100.785,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_045",
+      "name_th": "ศูนย์เยาวชนหนองจอก",
+      "name_en": "Nong Chok Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "50 หมู่ 2 ถนนเลียบวารี แขวงกระทุ่มราย เขตหนองจอก กรุงเทพมหานคร 10530",
+      "address_en": "50 Moo 2, Liap Wari Rd, Krathum Rai, Nong Chok, Bangkok 10530",
+      "district_th": "หนองจอก",
+      "district_en": "Not specified",
+      "phone": "02-548-3847",
+      "lat": 13.854,
+      "lng": 100.8653,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_046",
+      "name_th": "ศูนย์เยาวชนมีนบุรี",
+      "name_en": "Min Buri Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "ซอยคุ้มเกล้า 1 ถนนคุ้มเกล้า แขวงแสนแสบ เขตมีนบุรี กรุงเทพมหานคร 10510",
+      "address_en": "Soi Khum Klao 1, Khum Klao Rd, Saen Saep, Min Buri, Bangkok 10510",
+      "district_th": "มีนบุรี",
+      "district_en": "Not specified",
+      "phone": "02-175-4063",
+      "lat": 13.8019,
+      "lng": 100.7908,
+      "hours_th": "จันทร์-ศุกร์ 08.00-18.00 น.",
+      "hours_en": "Mon-Fri 08:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_047",
+      "name_th": "ศูนย์เยาวชนคลองสามวา",
+      "name_en": "Khlong Sam Wa Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "19 ถนนเลียบคลองสอง ซอยเลียบคลองสอง 19 แขวงสามวาตะวันตก เขตคลองสามวา กรุงเทพมหานคร 10510",
+      "address_en": "19 Liap Khlong Song Rd, Soi Liap Khlong Song 19, Sam Wa Tawan Tok, Khlong Sam Wa, Bangkok 10510",
+      "district_th": "คลองสามวา",
+      "district_en": "Not specified",
+      "phone": "02-548-0621",
+      "lat": 13.8597,
+      "lng": 100.7041,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_048",
+      "name_th": "ศูนย์เยาวชนประเวศ",
+      "name_en": "Prawet Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "ไม่ระบุ",
+      "address_en": "Not specified",
+      "district_th": "ไม่ระบุ",
+      "district_en": "Not specified",
+      "phone": "ไม่ระบุ",
+      "lat": 13.7161,
+      "lng": 100.6967,
+      "hours_th": "ไม่ระบุ",
+      "hours_en": "Not specified",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_049",
+      "name_th": "ศูนย์เยาวชนบางกะปิ",
+      "name_en": "Bang Kapi Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "99 ถนนรามคำแหง แขวงหัวหมาก เขตบางกะปิ กรุงเทพมหานคร 10240",
+      "address_en": "99 Ramkhamhaeng Rd, Hua Mak, Bang Kapi, Bangkok 10240",
+      "district_th": "บางกะปิ",
+      "district_en": "Not specified",
+      "phone": "02-374-2902",
+      "lat": 13.7621,
+      "lng": 100.6482,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_050",
+      "name_th": "ศูนย์เยาวชนห้วยขวาง",
+      "name_en": "Huai Khwang Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "ไม่ระบุ",
+      "address_en": "Not specified",
+      "district_th": "ไม่ระบุ",
+      "district_en": "Not specified",
+      "phone": "ไม่ระบุ",
+      "lat": 13.7766,
+      "lng": 100.5752,
+      "hours_th": "ไม่ระบุ",
+      "hours_en": "Not specified",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_051",
+      "name_th": "ศูนย์เยาวชนดินแดง",
+      "name_en": "Din Daeng Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "2 ถนนมิตรไมตรี แขวงดินแดง เขตดินแดง กรุงเทพมหานคร 10400",
+      "address_en": "2 Mitmaitri Rd, Din Daeng, Bangkok 10400",
+      "district_th": "ดินแดง",
+      "district_en": "Not specified",
+      "phone": "02-245-4743",
+      "lat": 13.7667,
+      "lng": 100.5574,
+      "hours_th": "อังคาร-อาทิตย์ 10.00-21.00 น.",
+      "hours_en": "Tue-Sun 10:00-21:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_052",
+      "name_th": "ศูนย์เยาวชนบางซื่อ",
+      "name_en": "Bang Sue Youth Center (Techa Wanich)",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "796 ถนนเตชะวณิช แขวงบางซื่อ เขตบางซื่อ กรุงเทพมหานคร 10800",
+      "address_en": "796 Techa Wanich Rd, Bang Sue, Bangkok 10800",
+      "district_th": "บางซื่อ",
+      "district_en": "Not specified",
+      "phone": "02-587-0689",
+      "lat": 13.805,
+      "lng": 100.536,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_053",
+      "name_th": "ศูนย์เยาวชนเตชะวณิช",
+      "name_en": "Techa Wanich Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "796 ถนนเตชะวณิช แขวงบางซื่อ เขตบางซื่อ กรุงเทพมหานคร 10800",
+      "address_en": "796 Techa Wanich Rd, Bang Sue, Bangkok 10800",
+      "district_th": "บางซื่อ",
+      "district_en": "Not specified",
+      "phone": "02-587-0689",
+      "lat": 13.805,
+      "lng": 100.536,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
+    },
+    {
+      "id": "rec_054",
+      "name_th": "ศูนย์เยาวชนวัดโสมนัส",
+      "name_en": "Wat Sommanat Youth Center",
+      "types": [
+        "recreation"
+      ],
+      "address_th": "622/10 ถนนกรุงเกษม แขวงวัดโสมนัส เขตป้อมปราบศัตรูพ่าย กรุงเทพมหานคร 10100",
+      "address_en": "622/10 Krung Kasem Rd, Wat Sommanat, Pom Prap Sattru Phai, Bangkok 10100",
+      "district_th": "ป้อมปราบศัตรูพ่าย",
+      "district_en": "Not specified",
+      "phone": "02-281-1081",
+      "lat": 13.76,
+      "lng": 100.51,
+      "hours_th": "จันทร์-ศุกร์ 10.00-20.00 น., เสาร์-อาทิตย์ 10.00-18.00 น.",
+      "hours_en": "Mon-Fri 10:00-20:00, Sat-Sun 10:00-18:00",
+      "province": "กรุงเทพมหานคร",
+      "source": "auto-import"
     }
   ]
 }
